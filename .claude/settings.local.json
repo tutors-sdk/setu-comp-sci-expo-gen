@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(make build *)",
+      "Bash(brew install *)",
+      "Bash(sudo tlmgr *)",
+      "Bash(tlmgr search *)",
+      "Bash(sudo *)",
+      "Bash(brew list *)",
+      "Bash(brew info *)",
+      "Bash(/usr/libexec/path_helper *)",
+      "Bash(brew reinstall *)",
+      "Bash(open *)",
+      "Bash(make clean *)",
+      "Bash(make all *)",
+      "Bash(python3 -m pip install pandas numpy)",
+      "Bash(python3 *)",
+      "Bash(make generate-content *)"
+    ]
+  }
+}
