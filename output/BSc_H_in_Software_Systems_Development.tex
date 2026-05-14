@@ -1,0 +1,298 @@
+% !TEX TS-program = LuaLaTeX
+\documentclass[openany,twoside]{report}
+
+\input{../latex/setu-computing-graduate-2026}
+
+\begin{document}
+
+\Programme{BSc (Hons) in Software Systems Development}
+
+\enlargethispage{11cm}
+
+\vspace{-1.75cm}
+\begin{minipage}{.3\textwidth}\flushleft
+This four-year programme empowers students with a comprehensive understanding of software development, web development, mobile app development, and data science alongside artificial intelligence and security fundamentals. Through specialized coursework, students delve into advanced programming languages and techniques essential for software engineering. 
+
+\vspace{0.3cm}
+They master web development frameworks, crafting dynamic and interactive web applications. 
+Dedicated modules in mobile app development equip students with the skills to create innovative solutions for iOS and Android platforms. 
+Moreover, the curriculum delves into data science methodologies, enabling students to extract insights from complex datasets. Graduates emerge with a versatile skill set, ready to meet the evolving demands of the tech industry.
+
+%This programme is designed to equip students with the skillset required to work in an array of computing roles in industry. 
+%Students will develop secure software with the most modern methods of software technology for all areas of application, and they will have the ability to analyse, select, and utilise appropriate emerging technologies for the development of a software solution. They will have the ability to store, manage and mine data for businesses, and to develop systems to enable organisations to extract value from such data.
+%
+%\vspace{0.3cm}
+%Companies in Ireland are seeking software developers who possess multi-disciplinary skills in the areas of Business, Psychology, Languages, or Sports Technology. With this in mind students will have the option to study those areas as elective option from year 2.
+%
+%\vspace{0.3cm}
+%In year 3 there is an opportunity for students to complete work placement or study abroad. Studying abroad has become a popular choice for all our students especially those who have chosen the European language elective. 
+
+\end{minipage}
+%
+\hfill
+%
+\begin{minipage}{.69\textwidth}
+%
+\definecolor{software}{RGB}{100,200,100}
+\definecolor{ui}{RGB}{200,150,100}
+\definecolor{modelling}{RGB}{150,250,250}
+\definecolor{database}{RGB}{150,150,250}
+\definecolor{data}{RGB}{250,150,250}
+\definecolor{security}{RGB}{250,220,125}
+\definecolor{professional}{RGB}{200,200,205}
+\definecolor{elective}{RGB}{205,205,100}
+%
+\definecolor{business}{RGB}{155,210,185}
+\definecolor{psychology}{RGB}{165,190,195}
+\definecolor{french}{RGB}{175,170,205}
+\definecolor{german}{RGB}{185,150,215}
+\definecolor{sport}{RGB}{155,220,115}
+
+%
+\def\WIDTH{2cm}
+\tikzset{
+	DEBUG/.style 	= {draw, outer sep=0pt},
+	CELL/.style 	= {DEBUG,anchor=north west,font=\smaller,text width=\WIDTH},
+	TITLE/.style	= {CELL, font=\bfseries\smaller[2]},
+	MODULE/.style	= {CELL,align=center},
+	LEFT/.style	= {CELL,text width=2.4cm,xshift=-.41cm},
+}
+%
+\centerline{\tikz \node[scale=0.8] {
+\begin{tikzpicture}
+	
+	%\node[TITLE] at (0,0.41) {Core Modules};
+	\foreach \s in {1,2,...,8} {\node[TITLE] at ({\s*\WIDTH+\s*6.5pt},0) {Semester \s\phantom{7}};}
+	\node[LEFT] at (0,0) (Subject Groups) {Subject\\ Groups};
+	%
+	\pgfpointanchor{Subject Groups}{south}
+    	\pgfgetlastxy{\X}{\Y}
+	\node[LEFT,text height=26pt,text depth=40.6pt] at (0,\Y) (Software) {Software\\ \& Web\\ Development};
+    	\foreach [count=\s] \l/\c in {%
+		Programming\\Fundamentals\\1/software,
+		Programming\\Fundamentals\\ 2/software,
+		Software\\Development\\Tools/software,
+		Data\\ Structures \&\\ Algorithms 1/software,
+		{}/white,
+		Mobile App\\Development\\1/software,
+		DevOps Practice/software,
+		Mobile App\\Development\\2/software%
+		} {
+		\node[MODULE,draw=\c,fill=\c!70!white,text height=9pt,text depth=21pt] at ({\s*\WIDTH+\s*6.5pt},\Y) (M)  {\l};
+	}
+	%
+	\pgfpointanchor{M}{south}
+    	\pgfgetlastxy{\X}{\Y}
+    	\foreach [count=\s] \l/\c in {%
+		Website\\Development\\1/software,
+		Website\\Development\\2/software,
+		User\\Experience/ui,
+		Web App\\Development\\1/software,
+		{}/white,
+		{}/white,
+		Web App\\Development\\2/software,
+		Cloud App\\Development/software%
+		} {
+		\node[MODULE,draw=\c,fill=\c!70!white,text height=9pt,text depth=21pt] at ({\s*\WIDTH+\s*6.5pt},\Y) (M) {\l};
+	}
+	%
+	\pgfpointanchor{M}{south}
+    	\pgfgetlastxy{\X}{\Y}
+	\node[LEFT,text height=9pt,text depth=21pt] at (0,\Y) (Database) {Database,\\ IS \&\\ Modelling};
+    	\foreach [count=\s] \l/\c in {%
+		Systems\\Analysis\\Design/modelling,
+		Intro to\\Software\\Engineering/modelling,
+		Database\\Fundamentals/database,
+		Database\\Systems/database,
+		{}/white,
+		NoSQL\\Databases/database%
+		} {
+		\node[MODULE,draw=\c,fill=\c!70!white,text height=9pt,text depth=21pt] at ({\s*\WIDTH+\s*6.5pt},\Y) (M)  {\l};
+	}
+	%
+	\pgfpointanchor{M}{south}
+    	\pgfgetlastxy{\X}{\Y}
+    	\foreach [count=\s] \l/\c in {%
+		{}/white,
+		Business\\Information\\Systems/modelling,
+		Enterprise\\Applications/modelling,
+		{}/white,
+		{}/white,
+		Digital\\\mbox{Transformation}\\and IS/modelling,
+		Enterprise\\Systems\\Architecture/modelling,
+		{}/white%
+		} {
+		\node[MODULE,draw=\c,fill=\c!70!white,text height=9pt,text depth=21pt] at ({\s*\WIDTH+\s*6.5pt},\Y) (M) {\l};
+	}
+	%
+	\pgfpointanchor{M}{south}
+    	\pgfgetlastxy{\X}{\Y}
+	\node[LEFT,text height=9pt,text depth=12pt] at (0,\Y) (Math) {Data Science};
+    	\foreach [count=\s] \l/\c in {%
+		Mathematics\\Fundamentals/data,
+		Statistical\\Analysis/data,
+		{}/white,
+		{}/white,
+		{}/white,
+		{Further Statistics}/data,
+		Data Science\\in Practice/data,
+		Data Science\\Essentials/data%
+		} {
+		\node[MODULE,draw=\c,fill=\c!70!white,text height=9pt,text depth=12pt] at ({\s*\WIDTH+\s*6.5pt},\Y) (M)  {\l};
+	}	
+	%
+	\pgfpointanchor{M}{south}
+    	\pgfgetlastxy{\X}{\Y}
+    	\foreach [count=\s] \l/\c in {%
+		{}/white,
+		{}/white,
+		{}/white,
+		{}/white,
+		{}/white,
+		{}/white,
+		{}/white,
+		Artificial\\Intellegence/data%
+		} {
+		\node[MODULE,draw=\c,fill=\c!70!white,text height=9pt,text depth=12pt] at ({\s*\WIDTH+\s*6.5pt},\Y) (M)  {\l};
+	}
+	%
+	\pgfpointanchor{M}{south}
+    	\pgfgetlastxy{\X}{\Y}
+	\node[LEFT,text height=9pt,text depth=21pt] at (0,\Y) (Security) {Computer\\Systems\\ \& Security};
+    	\foreach [count=\s] \l/\c in {%
+		Computer\\Systems 1/security,
+		Computer\\Systems 2/security,
+		Computer\\Networks/security,
+		Intro to\\Computer\\Security/security,
+		{}/white,%
+		Automated Cloud\\Services/security,
+		{}/white,%
+		Application\\Security/security%
+		} {
+		\node[MODULE,draw=\c,fill=\c!70!white,text height=9pt,text depth=21pt] at ({\s*\WIDTH+\s*6.5pt},\Y) (M)  {\l};
+	}	
+	%
+	\pgfpointanchor{M}{south}
+    	\pgfgetlastxy{\X}{\Y}
+	\node[LEFT,text height=9pt,text depth=12pt] at (0,\Y) (Professional) {Professional\\Studies};
+    	\foreach [count=\s] \l/\c in {%
+		\mbox{Communication}\\Skills/professional,
+		{}/white,
+		{}/white,
+		Professional\\Practice/professional,
+		{}/white,
+		{}/white,
+		Project 1/professional,
+		Project 2\\(10 credit)/professional%
+		} {
+		\node[MODULE,draw=\c,fill=\c!70!white,text height=9pt,text depth=12pt] at ({\s*\WIDTH+\s*6.5pt},\Y) (M)  {\l};
+	}	
+	%
+	\draw (1,-10.4) -- ++(18,0); 
+	%
+    	\def\Y{-10.6}
+	%
+	\pgfpointanchor{M}{south}
+    	%\pgfgetlastxy{\X}{\Y}
+    	\foreach [count=\s] \l/\c in {%
+		{}/white,
+		{}/white,
+		French B1.3/french,
+		French B1.4/french,
+		{}/white,
+		Intercultural\\Bus Context/french,
+		French B2.1/french,
+		French B2.2/french%
+		} {
+		\node[MODULE,draw=\c,fill=\c!70!white,text height=9pt,text depth=12pt] at ({\s*\WIDTH+\s*6.5pt},\Y) (M)  {\l};
+	}
+	\node[LEFT,text height=9pt,text depth=12pt] at (0,\Y) (Elective) {French};
+	%
+	\pgfpointanchor{M}{south}
+    	\pgfgetlastxy{\X}{\Y}
+    	\foreach [count=\s] \l/\c in {%
+		{}/white,
+		{}/white,
+		German B1.3/german,
+		German B1.4/german,
+		{}/white,
+		Intercultural\\Bus Context/german,
+		German B2.1/german,
+		German B2.2/german%
+		} {
+		\node[MODULE,draw=\c,fill=\c!70!white,text height=9pt,text depth=12pt] at ({\s*\WIDTH+\s*6.5pt},\Y) (M)  {\l};
+	}
+	\node[LEFT,text height=9pt,text depth=12pt] at (0,\Y) (Elective) {German};
+	%
+	\pgfpointanchor{M}{south}
+    	\pgfgetlastxy{\X}{\Y}
+    	\foreach [count=\s] \l/\c in {%
+		{}/white,
+		{}/white,
+		Introduction to\\Psychology/psychology,
+		Development\\Psychology/psychology,
+		{}/white,
+		Introduction\\to Social\\Psychology/psychology,
+		Intro to\\Cognition\\\& Perception/psychology,
+		Management\\Psychology/psychology%
+		} {
+		\node[MODULE,draw=\c,fill=\c!70!white,text height=9pt,text depth=21pt] at ({\s*\WIDTH+\s*6.5pt},\Y) (M)  {\l};
+	}
+	\node[LEFT,text height=9pt,text depth=21pt] at (0,\Y) (Elective) {\\Psychology};
+	%
+	\pgfpointanchor{M}{south}
+    	\pgfgetlastxy{\X}{\Y}
+    	\foreach [count=\s] \l/\c in {%
+		{}/white,
+		{}/white,
+		Introduction to\\ Sport and Exercise/sport,
+		Sports and Exercise\\Biomechanics 1/sport,
+		{}/white,
+		IOT Standards\\ and Protocols/sport,
+		Sports and Exercise\\ Biomechanics 2/sport,
+		Applied Biomechanics/sport%
+		} {
+		\node[MODULE,draw=\c,fill=\c!70!white,text height=9pt,text depth=21pt] at ({\s*\WIDTH+\s*6.5pt},\Y) (M)  {\l};
+	}
+	\node[LEFT,text height=9pt,text depth=21pt] at (0,\Y) (Elective) {Sports\\Science};
+	%
+	\pgfpointanchor{M}{south}
+    	\pgfgetlastxy{\X}{\Y}
+    	\foreach [count=\s] \l/\c in {%
+		{}/white,
+		{}/white,
+		Creative Problem\\Solving/business,
+		Integrated\\Marketing/business,
+		{}/white,
+		Technology\\Entrepreneurship/business,
+		Project\\Management/business,
+		Technology\\Commercialisation/business%
+		} {
+		\node[MODULE,draw=\c,fill=\c!70!white,text height=9pt,text depth=21pt] at ({\s*\WIDTH+\s*6.5pt},\Y) (M)  {\l};
+	}
+	\node[LEFT,text height=9pt,text depth=21pt] at (0,\Y) (Elective) {Technology\\Commercialisation};
+
+%	\node[draw,rounded corners=3pt] at (11,-12.1) {%
+%	Electives modules are grouped as Technology Commercialisation / Psychology / French / German
+%	};
+	
+	\coordinate (A) at (20.3,-0.8);
+   	 \coordinate (B) at (20.3,-9.2);
+	\draw [decorate, decoration={brace, amplitude=10pt, mirror}] (B) -- (A) 
+		node[midway, below, rotate=90,yshift=-12pt] 
+		{Pick any 3 modules in semester 8};
+
+	% special - Flexible Semester
+	\node[text width=5cm,align=center,rotate=90] at ({6.1*\WIDTH},-5.7) {Flexible Semester\\[6pt]\smaller 
+	Placement / Study Abroad /\\Voluntary Organisation Project};
+\end{tikzpicture}};}
+\end{minipage}\clearpage
+%: projects
+
+\projectsBegin
+
+\input{../output/BSc_H_in_Software_Systems_Development_projects}
+
+\projectsEnd
+
+\end{document}

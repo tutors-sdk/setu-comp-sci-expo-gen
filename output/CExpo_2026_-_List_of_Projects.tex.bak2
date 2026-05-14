@@ -1,0 +1,148 @@
+% !TEX TS-program = LuaLaTeX
+
+\documentclass[openany]{report}
+
+\input{../latex/setu-computing-graduate-2026}
+
+\booltrue{isSummary}
+
+\fancyhead[RO]{\leftmark}
+\fancyhead[LO]{\hyperlink{s:toc}{2026 Computing Expo --- List of Projects}}
+
+
+\def\PHOTOwidth{3.3cm}
+\tikzset{%
+    DEBUG/.style = {},
+    LABEL/.style = {DEBUG,font=\smaller\smaller\bfseries}
+}
+
+\def\RES{print}
+
+\hypersetup{pdfinfo={%
+	Title={2026 Computing Expo - List of Projects}, 
+	Author={Dept of Computing and Mathematics, SETU (Waterford)}, 
+	Subject={}, 
+	Producer={kmurphy, lbwhite, cdunphy (LuaLaTeX)},  
+	Version={
+	0.1 Initial draft - no room allocation
+	}, 
+	Date={13 April 2026}, 
+	Institution={South East Technological University}}}
+	
+\begin{document}
+
+
+\Frontmatter%
+%
+
+\ARTWORKCOVERLoP
+	
+\ifbool{isSummary}
+{}
+{%
+	%\thispagestyle{empty}\mbox{}\clearpage\clearpage
+	\setcounter{page}{1}
+	%
+	\input{../common_content/Welcome_Amanda}
+	\input{../common_content/Welcome_Lucy}
+	%\input{../common_content/Industry_Engagement}
+}
+
+\chapter*{Projects by Programme}\hypertarget{s:tocProgramme}{}
+
+\vspace{-12pt}
+\programmestoc
+
+\chapter*{Projects by Type / Subject Area}\hypertarget{s:tocType}{}
+
+\vspace{-12pt}
+\areastoc
+
+% (Undergraduate and HDip)
+\chapter*{Projects by Room}\hypertarget{s:tocRoom}{}
+
+\vspace{-12pt}
+\roomstoc
+
+\Mainmatter
+
+\hypertarget{Section 1: Undergraduate Programmes}{%
+	\ARTWORKPAGE{
+    		\node[scale=2.5, align=center, text width=10cm] 
+    		at ($(P.north west) + (11cm,-6.7cm)$) {\coverFontThird{\color{coverBlue}SETU WATERFORD}};
+    		\node[scale=4.5, align=center, text width=10cm] 
+    		at ($(P.north west) + (11cm,-8.6cm)$) (T) {\coverFont{\color{white}COMPUTING EXPO '26}};
+	}{%
+		\node[scale=2.5, align=center, text width=10cm] at ($(P.north west) + (11cm,-14.25cm)$) {
+			\color{white}
+			\coverFont{\Large Section 1}\\[-3pt]
+			\textcolor{white}{\rule{5cm}{1pt}}\\[6pt]
+			\coverFont {\large UNDERGRADUATE PROGRAMMES}\\[9pt]
+			\coverFont {\large BSc (HONS)}\\[9pt]
+		};
+	}{}
+	}	
+\writeProgrammeSection{Section 1: Undergraduate Programmes}
+
+\input{BSc_H_in_Applied_Computing.tex}  
+\input{BSc_H_in_Computer_Forensics_and_Security.tex}   
+
+\input{BSc_H_in_Creative_Computing.tex}                
+\input{BSc_H_in_Information_Technology_Management.tex} 
+\input{BSc_H_in_Software_Systems_Development.tex}
+%\input{BSc_H_in_Software_Systems_Practice.tex}
+%\input{BSc_H_in_the_Internet_of_Things.tex}
+%\input{BEng_H_in_Electronic_Engineering_projects}
+
+\hypertarget{Section 2: Online HDip Programme}{%
+	\ARTWORKPAGE{
+    		\node[scale=2.5, align=center, text width=10cm] 
+    		at ($(P.north west) + (11cm,-6.7cm)$) {\coverFontThird{\color{coverBlue}SETU WATERFORD}};
+    		\node[scale=4.5, align=center, text width=10cm] 
+    		at ($(P.north west) + (11cm,-8.6cm)$) (T) {\coverFont{\color{white}COMPUTING EXPO '26}};
+	}{%
+		\node[scale=2.5, align=center, text width=10cm] at ($(P.north west) + (11cm,-14.25cm)$) {
+			\color{white}
+			\coverFont{\Large Section 2}\\[-3pt]
+			\textcolor{white}{\rule{5cm}{1pt}}\\[6pt]
+			\coverFont {\large HIGHER DIPLOMA IN SCIENCE}\\[9pt]
+			\coverFont {\large HDip}\\[9pt]
+		};
+	}{}
+	}
+\writeProgrammeSection{Section 2: Online HDip Programme}
+
+\input{HDip_in_Computer_Science.tex}
+
+\hypertarget{Section 3: MSc Programmes}{%
+	\ARTWORKPAGE{
+    		\node[scale=2.5, align=center, text width=10cm] 
+    		at ($(P.north west) + (11cm,-6.7cm)$) {\coverFontThird{\color{coverBlue}SETU WATERFORD}};
+    		\node[scale=4.5, align=center, text width=10cm] 
+    		at ($(P.north west) + (11cm,-8.6cm)$) (T) {\coverFont{\color{white}COMPUTING EXPO '26}};
+	}{%
+		\node[scale=2.5, align=center, text width=10cm] at ($(P.north west) + (11cm,-14.25cm)$) {
+			\color{white}
+			\coverFont{\Large Section 3}\\[-3pt]
+			\textcolor{white}{\rule{5cm}{1pt}}\\[6pt]
+			\coverFont {\large MASTERS IN SCIENCE}\\[9pt]
+			\coverFont {\large MSc}\\[9pt]
+		};
+	}{}
+	}
+\writeProgrammeSection{Section 3: MSc Programmes}
+
+%\input{MSc_in_Computing.tex}
+
+\input{MSc_in_Computer_Science_Enterprise_Software_Systems}
+\input{MSc_in_Computing_Information_Systems_Processes}
+
+\projectBySubjectArea
+\projectByRoom
+
+\Backmatter
+
+\end{document}
+
+% \ifbool{isPoster}{}{\enlargethispage{1cm}}
+\ifbool{isPoster}{}{\vspace{-36pt}\enlargethispage{0pt}}
