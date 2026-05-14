@@ -1,0 +1,86 @@
+\documentclass[tikz]{standalone}
+
+\begin{document}
+\tikzstyle{block} = [anchor=north west,rectangle, draw=blue, thick, fill=white,text width=10em, text centered, rounded corners, minimum height=3em]
+\tikzstyle{highlight} = [anchor=north west,rectangle, draw=blue, thick, fill=yellow!20,text width=10em, text centered, rounded corners, minimum height=3em]
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% Current Core
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+
+% keys to store formatting of disciplines\pgfkeyssetvalue{/disciplines/Database and Analytics}{Database\\ and Analytics}
+\pgfkeyssetvalue{/disciplines/Information Systems and Modelling}{Information Systems and Modelling}
+\pgfkeyssetvalue{/disciplines/Computer Security}{Computer Security}
+\pgfkeyssetvalue{/disciplines/Computer Forensics}{Computer Forensics}
+\pgfkeyssetvalue{/disciplines/Game Development}{Game \\Development}
+\pgfkeyssetvalue{/disciplines/Media Development}{Media \\Development}
+\pgfkeyssetvalue{/disciplines/Software Dev Core}{Software Dev: \\Core}
+\pgfkeyssetvalue{/disciplines/Software Dev Mobile}{Software Dev: \\Mobile}
+
+\pgfkeyssetvalue{/disciplines/Cloud Computing}{Cloud Computing}
+\pgfkeyssetvalue{/disciplines/Computer Networks}{Computer Networks}
+\pgfkeyssetvalue{/disciplines/Automotive and Automation}{Automotive and Automation}
+\pgfkeyssetvalue{/disciplines/Internet of Things}{Internet of Things}
+\pgfkeyssetvalue{/disciplines/Digital Graphic Design}{Digital Graphic Design}
+\pgfkeyssetvalue{/disciplines/Animation}{Animation}
+\pgfkeyssetvalue{/disciplines/Software Dev Front End}{Software Dev: \\Front End}
+\pgfkeyssetvalue{/disciplines/Software Dev Back End}{Software Dev: \\Back End}
+
+\begin{tikzpicture}[scale=0.5]
+
+\def\X{7.67}
+\def\Y{2.3}
+
+\foreach \x [count=\xi]  in {Database and Analytics,Information Systems and Modelling,
+		Computer Security,Computer Forensics,Game Development,
+		Media Development,Software Dev Core,Software Dev Mobile} {
+	\pgfkeysifdefined{/students/K_M/\x}{
+		\node [highlight] (IL) at (\X*\xi,\Y) {\pgfkeysvalueof{/disciplines/\x}};
+	}{
+		\node [block] (IL) at (\X*\xi,\Y) {\pgfkeysvalueof{/disciplines/\x}};
+	}	
+}
+
+\foreach \x [count=\xi]  in {Cloud Computing,Computer Networks,
+		Automotive and Automation,Internet of Things,
+		Digital Graphic Design,Animation,
+		Software Dev Front End, Software Dev Back End} {
+	\pgfkeysifdefined{/students/K_M/\x}{
+		\node [highlight] (IL) at (\X*\xi,0) {\pgfkeysvalueof{/disciplines/\x}};
+	}{
+		\node [block] (IL) at (\X*\xi,0) {\pgfkeysvalueof{/disciplines/\x}};
+	}	
+}
+
+\end{tikzpicture}
+\end{document}
+
+
+
+
+
+\begin{tikzpicture}[scale=0.5]
+\matrix [column sep=1mm,row sep=1mm]
+{
+	\node [block] (IL) {Database and Analytics};&
+	\node [block] (IL) {Information Systems and Modelling};&
+	\node [block] (IL) {Computer Security};&
+	\node [block] (IL) {Computer Forensics};&
+	\node [highlight] (IL) {Game \\Development};&
+	\node [block] (IL) {Media \\Development};&
+	\node [block] (IL) {Software Dev: \\Core};&
+	\node [highlight] (IL) {Software Dev: \\Mobile};
+	\\
+	\node [block] (IL) {Cloud Computing};&
+	\node [highlight] (IL) {Computer Networks};&
+	\node [block] (AA) {Automotive and Automation}; & 
+	\node [block] (IL) {Internet of Things};&
+	\node [block] (AA) {Digital Graphic Design}; &
+	\node [block] (IL) {Animation};&
+	\node [highlight] (IL) {Software Dev: \\Front End};&
+	\node [block] (IL) {Software Dev: \\Back End};
+	\\
+	};
+\end{tikzpicture}	
+
+\end{document}

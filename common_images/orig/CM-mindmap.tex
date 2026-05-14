@@ -1,0 +1,78 @@
+% Mindmap
+% Author: Stefan Kottwitz
+% https://www.packtpub.com/hardware-and-creative/latex-cookbook
+\documentclass[border = 10pt]{standalone} 
+%%%<
+\usepackage{verbatim}
+%%%>
+%\begin{comment}
+%:Title: Mindmap
+%:Tags: Mindmaps;Cookbook
+%:Author: Stefan Kottwitz
+%:Slug: mindmap
+%
+%A mindmap of TeX concepts.
+%\end{comment}
+%\usepackage[landscape]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{mindmap}
+\usepackage{metalogo}
+%\usepackage{dtklogos}
+\begin{document}
+\begin{tikzpicture}
+  \path [
+    mindmap,
+    text = white,
+    level 1 concept/.append style =
+      {font=\small\bfseries, level distance = 47mm,sibling angle=30},
+    level 2 concept/.append style =
+      {font=\tiny\bfseries, sibling angle=45},
+    level 3 concept/.append style =
+      {font=\small\bfseries},
+    tex/.style     = {concept, ball color=blue,
+      font=\Large\bfseries},
+    programming/.style = {concept, ball color=green!50!black},
+    mobile/.style = {concept, ball color=blue!50!black},
+    webdev/.style = {concept, ball color=red!90!black},
+    cloud/.style = {concept, ball color=orange!90!black},
+    platform/.style = {concept, ball color=olive!90!black},
+    security/.style = {concept, ball color=cyan!90!black},
+    digitalskills/.style = {concept, ball color=purple!90!black},
+    network/.style = {concept, ball color=magenta!90!black},
+    bigdata/.style = {concept, ball color=teal!90!black},
+    ea/.style = {concept, ball color=violet!90!black},
+    ebusiness/.style = {concept, ball color=lime!90!black},
+    callcentre/.style = {concept, ball color=pink!90!black},
+    devops/.style = {concept, ball color=gray!90!black}
+  ]
+  node [tex] {Department of \\Computing \& Mathematics} [clockwise from=0]
+    child [concept color=orange, nodes={mobile}] {
+      node {Software \\Development}} 
+    child [concept color=orange, nodes={webdev}] {
+      node {Media \\Development}}
+    child [concept color=orange, nodes={cloud}] {
+      node {Cloud Computing}}% [clockwise from=-30]
+%      child { node[concept] {Waterford Technologies} }
+%      child { node[concept] {Hosting Ireland} }
+%      child { node[concept] {Core HR} }
+%      child { node[concept] {MindaClient} }}
+  	child [concept color=orange, nodes={platform}] {
+  		node {Game \\Development} }
+	child [concept color=orange, nodes={security}] {
+  		node {Computer \\Forensics} }
+	child [concept color=orange, nodes={devops}] {
+  		node {Computer \\Security} }
+  	child [concept color=orange, nodes={network}] {
+  		node {Computer \\Networks} }
+  	child [concept color=orange, nodes={bigdata}] {
+  		node {Database \& Analytics} }
+  	child [concept color=orange, nodes={ea}] {
+  		node {Information  \\Systems} }
+  	child [concept color=orange, nodes={ebusiness}] {
+  		node {Graphic \\Design \& \\Animation} }
+  	child [concept color=orange, nodes={callcentre}] {
+  		node {Automotive \& \\Automotion} }
+  	child [concept color=orange, nodes={digitalskills}] {
+  		node {Internet \\of Things} };
+\end{tikzpicture}
+\end{document}
