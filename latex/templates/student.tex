@@ -1,0 +1,110 @@
+% !TEX TS-program = LuaLaTeX
+\documentclass[twoside]{report}
+
+\input{../latex/setu-computing-graduate-2026}
+\def\RES{ebook}
+\def\FORMAT{jpeg}
+
+\booltrue{isSingleStudent}
+\booltrue{showFakePhoto}
+
+\begin{document}
+
+\begingroup\globaldefs=1\relax
+
+%: SID
+\pgfkeyssetvalue{/students/[Key]/SID}{[SID]}
+
+
+%: Key
+\def\Key{[Key]}
+\pgfkeyssetvalue{/students/[Key]/Key}{[Key]}
+
+%: Name
+\pgfkeyssetvalue{/students/[Key]/Name}
+{[Name]}
+\pgfkeyssetvalue{/students/[Key]/SortName}
+{[SortName]}
+
+%: Programme
+\pgfkeyssetvalue{/students/[Key]/Programme}
+{[Programme]}
+
+%: Photo
+\pgfkeyssetvalue{/students/[Key]/Photo}
+{[Photo]}
+\pgfkeyssetvalue{/students/[Key]/HasPhoto}
+{[HasPhoto]}
+
+%: Poster
+\pgfkeyssetvalue{/students/[Key]/Poster}
+{[Poster]}
+\pgfkeyssetvalue{/students/[Key]/HasPoster}
+{[HasPoster]}
+\pgfkeyssetvalue{/students/[Key]/PosterWidth}
+{[PosterWidth]}
+\pgfkeyssetvalue{/students/[Key]/PosterHeight}
+{[PosterHeight]}
+\pgfkeyssetvalue{/students/[Key]/PosterOrientation}
+{[PosterOrientation]}
+\pgfkeyssetvalue{/students/[Key]/PosterScale}
+{[PosterScale]}
+
+%: QR
+\pgfkeyssetvalue{/students/[Key]/QR}
+{[QR]}
+\pgfkeyssetvalue{/students/[Key]/HasQR}
+{[HasQR]}
+
+%: CommercialTitle
+\pgfkeyssetvalue{/students/[Key]/CommercialTitle}
+{[CommercialTitle]}
+
+%: AcademicTitle
+\pgfkeyssetvalue{/students/[Key]/AcademicTitle}
+{[AcademicTitle]}
+
+%: Summary
+\pgfkeyssetvalue{/students/[Key]/Summary}
+{[Summary]}
+
+%: Technologies 
+\pgfkeyssetvalue{/students/[Key]/Technologies}
+{[Technologies]}
+
+%: ProjectURL
+\pgfkeyssetvalue{/students/[Key]/ProjectURL}
+{[ProjectURL]}
+
+%: SupervisorLabel
+\pgfkeyssetvalue{/students/[Key]/SupervisorLabel}
+{[SupervisorLabel]}
+
+%: SupervisorTitle
+\pgfkeyssetvalue{/students/[Key]/SupervisorTitle}
+{[SupervisorTitle]}
+
+%: Supervisor
+\pgfkeyssetvalue{/students/[Key]/Supervisor}
+{[Supervisor]}
+
+%: Room
+\pgfkeyssetvalue{/students/[Key]/Room}
+{[Room]}
+
+%: Number
+\pgfkeyssetvalue{/students/[Key]/Number}
+{[Number]}
+
+%: ProjectAreas
+\pgfkeyssetvalue{/students/[Key]/ProjectAreas}
+{[ProjectAreas]}
+\pgfkeyssetvalue{/students/[Key]/ProjectAreasTeX}
+{[ProjectAreasTeX]}
+\pgfkeyssetvalue{/students/[Key]/ProjectAreasTeX2}
+{[ProjectAreasTeX2]}
+
+\endgroup
+
+\DefaultLayout
+\end{document}

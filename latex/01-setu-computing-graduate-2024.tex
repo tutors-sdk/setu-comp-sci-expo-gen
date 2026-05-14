@@ -1,0 +1,1156 @@
+% !TEX TS-program = LuaLaTeX
+
+% !TEX root =  ../output/CExpo_2024_-_Project_Brochure.tex
+% !TEX root =  ../output/CExpo_2024_-_List_of_Projects.tex
+% TEX root = ../student_content/Binu_Peter_46FEC.tex
+% TEX root =  ../output/BSc_H_in_Creative_Computing.tex
+% !TEX root =  ../output/2024_Computing_Expo_-_List_of_Projects.tex
+
+\PassOptionsToPackage{svgnames}{xcolor}
+\PassOptionsToPackage{hyphens}{url}
+
+%BUG: LuaLaTeX+crop+microtype requires luatex85
+\usepackage{ifluatex}
+\ifluatex\RequirePackage{luatex85}\else\fi
+
+%: Programming
+
+\usepackage{standalone}
+\usepackage{etoolbox}
+\usepackage{currfile}
+\usepackage{xstring}
+\usepackage{fontawesome}
+\usepackage{tikzpagenodes}
+
+\newbool{isSingleProgramme}\boolfalse{isSingleProgramme}
+\newbool{isSingleStudent}\boolfalse{isSingleStudent}
+\newbool{isLogo}\boolfalse{isLogo}
+\newbool{isPoster}\boolfalse{isPoster} % is generating entries with posters?
+\booltrue{isPoster}
+%\newbool{isEBook}\booltrue{isEBook}
+
+\newbool{isSummary}\booltrue{isSummary}
+\boolfalse{isSummary} % OPTION isSummary
+
+\usepackage{xstring}
+
+\newcommand{\safetext}[1]{%
+  \StrSubstitute{#1}{_}{\_}[\mytemp]%
+  \texttt{\mytemp}%
+}
+
+%: Navigation
+
+\tikzstyle{NAVITEM}=[outer sep=0pt, inner sep=0pt]
+\def\navItem#1#2#3{%
+	\textcolor{#3}{%
+    		\setlength{\contourlength}{0.07em}%
+    		\begin{tikzpicture}
+    		\node[NAVITEM,rotate=180] (I) {#1}; 
+    		\node[NAVITEM] at (I) % circle, fill=white,inner sep=2pt,opacity=0.9
+    			{\bfseries\Large\contour{white}{#2}}; 
+    		\end{tikzpicture}%
+    	}%
+}
+
+\def\navTocProgramme{\navItem{\faList}{P}{blue}}
+\def\navTocType{\navItem{\faList}{T}{blue}}
+
+%\def\navBarPROG{\textcolor{gray!50}{\tikz \node[NAVITEM,rotate=180]{\faListAlt};}}
+\def\navBarPROG{\navItem{\faListAlt}{S}{gray!50}}
+
+\def\navBar{\raisebox{-16pt}[0pt][0pt]{\Huge%
+\hyperlink{s:tocProgramme}{\navTocProgramme}\quad%
+\hyperlink{s:tocType}{\navTocType}\quad%
+\navBarPROG\quad%
+\Acrobatmenu{GoBack}{\textcolor{blue}{\faRotateLeft}}\quad%
+\Acrobatmenu{PrevPage}{\textcolor{blue}{\faArrowLeft}}\quad%
+\Acrobatmenu{NextPage}{\textcolor{blue}{\faArrowRight}}%
+}}
+
+%: Page layout
+\usepackage[margin=2cm]{geometry}
+
+% changing from 1.414 to 16:9 
+% (could use 336mm x 189mm but see that powerPoint uses 338.7mm x 190.5mm
+\newlength{\reportwidth}
+\setlength{\reportwidth}{338.7mm}
+\newlength{\reportheight}
+\setlength{\reportheight}{190.5mm}
+
+\geometry{papersize={\reportwidth,\reportheight}}
+\geometry{layoutsize={\reportwidth,\reportheight}}
+\geometry{total={\reportwidth,\reportheight}}
+\geometry{includehead=false,includefoot=false} 
+
+% Draw a box to show the text area
+\newcommand{\drawtextarea}{%
+    \begin{tikzpicture}[overlay,remember picture]
+        \draw[red,dashed,thick] ($(current page text area.north west) + (0.5cm,-0.5cm)$) rectangle ($(current page text area.south east) + (-0.5cm,0.5cm)$);
+    \end{tikzpicture}%
+}
+
+\def\BLEED{3mm}
+\newbool{showBleed}
+\boolfalse{showBleed}
+\ifbool{showBleed}{\usepackage[a3, cam, axes,pdflatex,center]{crop}}{}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\cfoot{}
+\fancyfoot[LO]{\footnotesize \href{https://www.wit.ie/schools/science_computing/department_of_computing_maths}{www.wit.ie/computing}}
+\fancyfoot[LO]{\navBar}
+\fancyfoot[RO]{\footnotesize ~ Page \thepage}
+%\fancyfoot[RE]{\footnotesize \href{https://www.wit.ie/schools/science_computing/department_of_computing_maths}{www.wit.ie/computing}}
+\fancyfoot[RE]{\navBar}
+\fancyfoot[LE]{\footnotesize ~ Page \thepage}
+
+\fancyhead[LE]{\leftmark}
+\fancyhead[RE]{\hyperlink{s:toc}{2024 Computing Graduate Handbook}}
+\fancyhead[RO]{\leftmark}
+\fancyhead[LO]{\hyperlink{s:toc}{2024 Computing Graduate Handbook}}
+
+\renewcommand{\headrulewidth}{1pt}     
+\renewcommand{\footrulewidth}{0.4pt}    
+
+\fancypagestyle{plain}{%
+	\fancyhf{} 
+	\fancyfoot[RO]{\footnotesize ~ Page \thepage}
+	\fancyfoot[LO]{\navBar}
+	%{\footnotesize \href{http://www.wit.ie/computing}{www.wit.ie/computing}}
+	\fancyfoot[LE]{\footnotesize ~ Page \thepage}
+	\fancyfoot[RE]{\navBar}
+	%{\footnotesize \href{http://www.wit.ie/computing}{www.wit.ie/computing}}
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0.4pt}
+}
+
+\renewcommand{\chaptermark}[1]{\markboth{\protect\hyperlink{chap:\arabic{chapter}}{#1}}{}}
+
+
+%: Fonts
+\usepackage{ragged2e}
+\usepackage{relsize}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome}
+\usepackage{lmodern}
+\usepackage{microtype}
+%\hyphenpenalty=1000
+% https://tex.stackexchange.com/questions/31301/how-to-reduce-the-number-of-hyphenation
+
+\ifluatex%
+	\newfontfamily{\TitleFont}[Scale=3.5]{Verdana}
+	\newfontfamily{\SubtitleFont}[Scale=2.5]{Verdana}
+	%\setmainfont{Junicode} 
+	%\setmainfont{Palatino}[Scale=1.0]
+	%\setmainfont{Proxima Nova}
+	\setmainfont{Georgia}[Scale=1]
+%	\setmainfont{Lucida Grande}
+%	\setmainfont{FiraSans}
+%	\setmainfont{Optima Regular}[
+%	BoldFont=Optima Bold,
+%	ItalicFont=Optima Italic,
+%	BoldItalicFont=Optima Bold Italic]
+\else%
+%	\usepackage{palatino}
+%\usepackage[T1]{fontenc}
+%\fontfamily{georgia}\selectfont
+\usepackage[sfdefault]{FiraSans}
+\fi
+%\usepackage{kpfonts}
+\usepackage{eurosym}
+
+\usepackage{pifont}
+\def\tickYes{\textcolor{green!50}{\mbox{\ding{52}}}}
+\def\tickNo{\textcolor{red}{\mbox{\ding{56}}}}
+
+
+%: Colours
+\usepackage[svgnames]{xcolor}
+\definecolor{studentheading}{named}{DarkSlateBlue}
+\definecolor{studentsubheading}{named}{Indigo}
+
+
+%: Graphics
+\usepackage{contour}
+\usepackage{pdfpages}
+\usepackage{tikz,tikzpeople}
+\usepackage[skins,breakable]{tcolorbox}
+\usepackage{wrapfig,float}
+\usepackage{incgraph}
+
+\def\RES{print}
+\graphicspath{{../common_images/res_\RES/},{../student_images/res_\RES/}}
+
+\usepackage[labelformat=empty]{caption}
+
+\usetikzlibrary{shadows, decorations, decorations.pathreplacing,decorations.pathmorphing}
+\tikzstyle{POSTIT}=[fill=yellow!50,draw,thick,
+decorate, drop shadow,
+decoration={random steps,segment length=3pt,amplitude=1pt},
+text width=4cm, font=\smaller]
+
+\tikzstyle{PHOTO}=[inner sep=0pt,outer sep=0pt,align=center]
+\tikzstyle{LABEL}=[inner sep=12pt,outer sep=3pt]
+
+\newcommand{\mygraphics}[2][]{
+	\tcbox[enhanced,boxsep=0pt,top=0pt,bottom=0pt,left=0pt, drop lifted shadow,
+		right=0pt, boxrule=0pt, clip upper,
+		colback=black!75!white, toptitle=2pt, bottomtitle=2pt,nobeforeafter]
+  	{\includegraphics[width=#1]{#2}}
+}
+\newcommand{\studentphoho}[2][]{
+	\tcbox[enhanced,boxsep=0pt,top=0pt,bottom=0pt,left=0pt, drop small lifted shadow,
+		right=0pt, boxrule=0pt, clip upper,
+		colback=black!75!white, toptitle=2pt, bottomtitle=2pt,nobeforeafter]
+  	{\includegraphics[width=#1]{#2}}
+}
+
+%: Sectioning
+\usepackage{sectsty}
+
+\renewcommand{\thechapter}{}
+\usepackage{titlesec}
+\def\CHAPTERSEP{-80pt}
+\def\CHAPTERSIZE{\LARGE}
+\def\SECTIONSIZE{\Large}
+\titleformat{\chapter}[hang]
+        {\vspace{\CHAPTERSEP}\hypertarget{chap:\arabic{chapter}}{}\bfseries\CHAPTERSIZE\itshape}
+        {\hspace{-2.56ex}}
+        {2.5ex}
+        {\noindent\rule{\textwidth}{1pt}\\\vspace{1ex}\centering}
+        [\vspace{-2ex}\rule{\textwidth}{1pt}\\\vspace{1ex}\centering]
+
+
+%: Paragraphs
+\usepackage{multicol}
+\parindent0pt
+\setcounter{secnumdepth}{0}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{setspace}
+
+
+%: Lists
+\usepackage[sharp]{easylist}
+
+
+%: Cross-referencing
+\usepackage{url,hyperref}
+\hypersetup{
+     colorlinks = true,
+     linkcolor = blue,
+     menubordercolor = blue,
+     linkbordercolor = blue,
+     anchorcolor = blue,
+     citecolor = blue,
+     filecolor = blue,
+     urlcolor = studentheading
+}
+
+
+%: Document Parts
+
+%: 	Frontmatter
+\newcommand\Frontmatter{\renewcommand\thepage{\roman{page}}}
+
+%: 	Mainmatter
+\newcommand\Mainmatter{%
+	\immediate\openout\programmesTOC=\jobname.programmes
+	\immediate\openout\areasTOC=\jobname.areas
+	\clearpage\setcounter{page}{1}\renewcommand\thepage{\arabic{page}}}
+
+%: 	Backmatter
+\newcommand\Backmatter{}
+
+%: Programme Summary and contact
+
+\newcommand\Programme[1]{%
+	\clearpage\clearpage\hypertarget{#1}{}\label{programme:#1}%
+	\gdef\PROGRAMME{#1}
+	\chapter{#1}\label{c:#1}%
+	\writeprogrammelink{#1}
+	\def\navBarPROG{\hyperlink{#1}{\navItem{\faListAlt}{S}{blue}}}
+}
+
+%: 	Programme Aim
+\newenvironment{programmeAim}[1]{%
+	\tcolorbox[beamer,%
+	noparskip,breakable,
+	colback=white,colframe=DarkBlue,%
+	colbacklower=DarkBlue!75!LightBlue,title=#1]}%
+{\endtcolorbox}
+
+%: TOC
+
+%: 	programmes in document  
+\newwrite\programmesTOC
+
+
+\newcommand\ProgrammeSection[1]{%
+	\noindent
+	%{\bfseries #1}\par\vspace{3pt}
+	\vspace{24pt}\par\noindent 
+	% {\bfseries\itshape #1}\\[-6pt]%\\[-6pt]\rule{\textwidth}{.5pt}\\[-12pt]
+	\hyperlink{#1}{%
+		{\bfseries\itshape #1}\\[-6pt]
+		%\parbox[t]{\textwidth-1cm}{{\bfseries #1}~\dotfill~\parbox{15pt}{\hfill~\pageref{c:#1}}}%\hspace*{-13pt}
+ 	}\par\vspace{6pt}
+
+}
+
+\newcommand\writeProgrammeSection[1]{%
+\immediate\write\programmesTOC{\noexpand\ProgrammeSection{#1}}%
+}
+
+\input{../output/programme_counts.tex}
+
+\newcommand\ProgrammeLink[1]{
+	\par\noindent\hspace*{1cm}%
+	\hyperlink{#1}{%
+		\parbox[t]{\textwidth-1cm}{{\bfseries #1}~\dotfill~%
+		\pgfkeysvalueof{/programme/#1/Count}\raisebox{-2pt}{\parbox{1cm}{\dotfill}}~%
+		\parbox{15pt}{\hfill~\pageref{c:#1}}}%\hspace*{-13pt}
+ 	}\par\vspace{6pt}
+}
+
+\newcommand\writeprogrammelink[1]{\immediate\write\programmesTOC{\noexpand\ProgrammeLink{#1}}}
+
+\newcommand{\programmestoc}{%
+	\IfFileExists{\jobname.programmes}{%
+		\vspace{-24pt}\vspace{-24pt}\vspace{-12pt}
+		%{\bfseries\itshape Projects by Programme}\\[-6pt]\rule{\textwidth}{.5pt}\\[-12pt]
+		\input{\jobname.programmes}
+		%\rule{\textwidth}{.5pt}%
+	}
+	{\typeout{may have changed. Rerun}}
+}
+
+%: 	areas in document  
+\newwrite\areasTOC
+
+\newcommand\AreaLink[1]{
+	\par\noindent%
+	\hyperlink{#1}{%
+		\parbox[t]{\textwidth}{{\bfseries \pgfkeysvalueof{/area/#1/Name}}~\dotfill~%
+		 \pgfkeysvalueof{/area/#1/Count}\raisebox{-2pt}{\parbox{1cm}{\dotfill}}~%
+		 \parbox{15pt}{\hfill~\pageref{area:#1}}}%\hspace*{-13pt}
+ 	}\par\ifbool{isSummary}{\vspace{8pt}}{\vspace{2pt}}
+}{
+
+\newcommand\writearealink[1]{\immediate\write\areasTOC{\noexpand\AreaLink{#1}}}
+
+
+\newcommand{\areastoc}{%
+	\def\areaNewLine{ }
+	\IfFileExists{\jobname.areas}{%
+		\vspace{-24pt}
+		%{\bfseries\itshape Projects by Subject Area}\\[-6pt]
+		%\rule{\textwidth}{.5pt}\\[-12pt]
+		\input{\jobname.areas}
+		%\rule{\textwidth}{.5pt}%
+	}
+	{\typeout{Warning: labels may have changed. Rerun}}
+}
+
+%: 	programme-level projects
+\newwrite\projectsTOC
+
+% NOTE
+% In Science 2020 we moved from pfgkeys in 2019 Computing.
+% Tried to move back with a lighter pgfkeys implementation where individual data was in student files
+%  but had issues of keys not being defined in time.
+% SO need to import/define keys before using them - does not work with individual student files unless
+% these files are loaded twice - need to think of an alternative -> 2021
+% update: 2020
+% reordered code and current structure allows for separate student files, all data in pgfkeys, and single input  !
+
+\newcommand\ProjectLink[3]{
+	\par\noindent%
+	\pgfkeysgetvalue{/students/#1/Name}{\Name}
+	\hyperlink{#1}{%
+		\parbox[t]{\textwidth}{{\bfseries \Name\mbox{}}\\#3\mbox{}~\dotfill~\parbox{4.5ex}{\hfill~\pageref{project:#1}}}%\hspace*{-3.7ex}
+ 	}\par\vspace{6pt}%
+}
+
+
+\newcommand{\projectstoc}{%
+	\IfFileExists{\currfilebase.projects}{%
+		\noindent
+		{\bfseries\itshape Projects}\\[-6pt]
+		\rule{\textwidth}{.5pt}\\[-12pt]
+		\input{\currfilebase.projects}
+	\rule{\textwidth}{.5pt}%!TEX encoding = UTF-8 Unicode
+	}{\typeout{may have changed. Rerun}}	
+}
+
+\newcommand\writeprojectlink{%
+	\pgfkeysgetvalue{/students/\Key/Name}{\Name}%
+	\pgfkeysgetvalue{/students/\Key/ProjectTitle}{\ProjectTitle}%
+	\immediate\write\projectsTOC{\noexpand\ProjectLink{\Key}{Name}{\ProjectTitle}}%
+}
+
+\newcommand\projectsBegin{%
+	\immediate\openout\projectsTOC=\currfilebase.projects
+}
+
+\newcommand\projectsEnd{%
+	\immediate\closeout\projectsTOC\clearpage
+}
+
+\newcommand\DisciplineProjectLink[3]{
+	\par\noindent%
+	\hyperlink{#1}{%
+		\parbox[t]{16cm}{{\bfseries #2}\\#3\mbox{}~\dotfill~\parbox{4.5ex}{\hfill~\pageref{project:#1}}\hspace*{-3.7ex}}%
+ 	}\par\vspace{1pt}
+}
+
+%: Photo TOC by programme
+
+%\input{../student_content/photos.tex}
+
+\newcommand\typesetPhotoTOC[3][\par]{%
+
+	\pgfkeysgetvalue{/\PROGRAMME/students}{\TMP}
+
+	\tikzstyle{PHOTOTOC} = [text width=#3]
+	\tikzstyle{PHOTOLABEL} = [anchor=north,text width=#3, align=center, text depth=24pt]
+	
+	\foreach \Key [count=\n] in \TMP {
+		\pgfmathsetmacro\r{int((\n-1)/#2)}
+		\pgfmathsetmacro\c{int(\n-#2*\r)}
+		\pgfkeysgetvalue{/students/\Key/PhotoTOC}{\PHOTO}
+		\def\PHOTO{../student_images/res_\RES/\PHOTO}
+		\typeout{HHHHHHHHHHHH   \PHOTO}
+		\hyperlink{\Key}{\begin{tikzpicture}
+			\node[PHOTOTOC] (P) {\fancyframe{\includegraphics[width=.9\textwidth]{\PHOTO}}};
+			\node[PHOTOLABEL] (N) at (P.south) {\pgfkeysvalueof{/students/\Key/PhotoName}};
+		\end{tikzpicture}}
+		\ifnum\c=#2#1\fi
+	}%
+}
+
+%: Photo TOC by programme and project type
+\newcommand\typesetPhotoTOCGROUPS[3][\par]{%
+	 %
+	\tikzstyle{PHOTOTOC} = [text width=#3]
+	\tikzstyle{PHOTOLABEL} = [anchor=north,text width=#3, align=center, text depth=24pt]
+	%
+	\centerline{\Large\bfseries Projects by Type}\vspace{6pt}
+	\pgfkeysgetvalue{/\PROGRAMME/project types}{\TTMP}
+	\foreach \TYPE [count=\k] in \TTMP {
+		\noindent
+		\pgfkeysgetvalue{/\PROGRAMME/\TYPE/Name}{\NAME}
+		{\bfseries\itshape{\NAME}}\\[-6pt]
+		\rule{\textwidth}{.5pt}\\[-12pt]
+		\begin{center}
+			\def\PROGRAMME{HDip in Computer Science/\TYPE}
+			\typesetPhotoTOC{6}{3.25cm}
+		\end{center}
+	}
+}
+
+%: TOC projectBySubjectArea
+
+\def\projectBySubjectArea{
+    \chapter*{Projects by Subject Area}\hypertarget{disciplines}{}\label{disciplines}
+    \chaptermark{\protect\hyperlink{disciplines}{Projects by Subject Area}}
+    
+    \def\TOCWIDTH{.92\textwidth}
+    
+    \mbox{}\vspace{-40pt}
+    
+    \newlength{\tocwidth}\setlength{\tocwidth}{\textwidth}
+    %\addtolength{\tocwidth}{-4.5ex}
+    
+    \pgfkeysgetvalue{/areas/ALL}{\TMPA}
+    \foreach \d in \TMPA  {
+    	\def\areaNewLine{ }
+    	\vskip 12pt plus20pt minus0pt
+    	\par\hypertarget{\d}{}\section*{\pgfkeysvalueof{/area/\d/Name}}%
+		\label{area:\d}\par\nopagebreak%
+    	\writearealink{\d}
+    	\vskip 3pt plus6pt minus3pt
+    	\pgfkeysgetvalue{/areas/projects/\d}{\TMPB}
+    	\foreach \p in \TMPB {
+    		\pgfkeysgetvalue{/students/\p/Name}{\Name}
+    		\pgfkeysgetvalue{/students/\p/AcademicTitle}{\ProjectTitle}
+    		\par\noindent%
+    		\def\Key{\p}
+    		\hyperlink{\p}{%
+    			\parbox[t]{\tocwidth}
+    			{{\bfseries \Name}\mbox{}\\\ProjectTitle\mbox{}~\dotfill~%
+    			\raisebox{-5pt}{\typesetLocation} \raisebox{-2pt}{\parbox{1cm}{\dotfill}}
+    			\parbox{4.5ex}{\hfill~\pageref{project:\p}}}%\hspace*{-3.7ex}
+     		}
+    		\par\vspace{6pt}
+    	}
+    }
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%: Layout of student entries
+
+\newcommand\ITEM{\newline$\bullet\hspace{0.5ex}$}
+
+%\newcommand\Student[1]{\input{../data/content/edited/#1}}
+
+\newbool{showFakePhoto}\boolfalse{showFakePhoto}
+\newbool{havePhoto}
+
+%:	styles
+
+\tikzset{%
+	DEBUG/.style = {},
+	POINT/.style = {inner sep=0pt,outer sep=0pt},
+	NAME/.style = {DEBUG,anchor=north east, text width=10cm, align=right},
+	COMMERICAL_TITLE/.style = {DEBUG,anchor=north west, text width=\textwidth},
+	ACADEMIC_TITLE/.style = {DEBUG,anchor=north west, text width=\textwidth},
+	TITLE/.style = {DEBUG,anchor=north west, text width=\textwidth},
+	PHOTO/.style = {DEBUG,anchor=north, text width=3cm,align=center},
+	SUMMARY/.style = {DEBUG,anchor=north east, text width=\textwidth, align=left},
+	TECHNOLOGIES/.style = {DEBUG, anchor=north west, inner sep=0pt, 
+		text width=20cm, text depth=5pt,font={\smaller[2]\bfseries}},
+	PROJECT_AREAS/.style = {DEBUG, anchor=north west, inner sep=0pt, 
+		text width=18cm, text depth=5pt,font={\smaller[2]\bfseries}},
+	PROJECT_URL/.style = {DEBUG, anchor=north west, inner sep=0pt, 
+		text width=18cm, text depth=5pt,font={\smaller[2]\bfseries}},
+	%
+	SUPERVISOR/.style = {CONTENT, text width=14cm},
+	TECHNOLOGIES/.style = {DEBUG, anchor=north west, inner sep=0pt, 
+		text width=18cm, text depth=5pt,font={\smaller[2]\bfseries}},
+	TECHNOLOGIES_LABEL/.style = {DEBUG, anchor=south, inner sep=0pt, 
+		text width=5.6cm, text depth=5pt,font={\smaller[2]\bfseries}},
+	TECHNOLOGIES_BODY/.style = {DEBUG, anchor=north west, text width=5.6cm, inner sep=0pt, align=left,font={\smaller[1]}},
+}
+
+%:	colours
+\definecolor{studentName}{named}{red}
+\definecolor{studentTitle}{named}{Indigo}
+\definecolor{studentSummary}{named}{Indigo}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newlength{\imagepadding}
+
+%:	Name
+\newcommand\typesetName{%
+	\pgfkeysgetvalue{/students/\Key/Name}{\Name}%
+	{\color{studentName} \bfseries\Large\mbox{}\hfill by \Name}%
+}
+
+%:	CommercialTitle
+\newcommand\typesetCommercialTitle{{%
+	\pgfkeysgetvalue{/students/\Key/CommercialTitle}{\CommercialTitle}%
+	\color{studentTitle}\bfseries\Large \parbox{20cm}{\hfill\CommercialTitle\hfill\mbox{}}\par}}
+
+%:	AcademicTitle
+\newcommand\typesetAcademicTitle{{%
+	\pgfkeysgetvalue{/students/\Key/AcademicTitle}{\AcademicTitle}%
+	\color{studentTitle}\bfseries\large \parbox{20cm}{\raggedright\AcademicTitle}\par}}
+
+%:	Photo
+\newcommand{\fancyframe}[2][]{
+	\tcbox[enhanced,boxsep=0pt,top=0pt,bottom=0pt,left=0pt, drop small lifted shadow,
+		right=0pt, boxrule=0pt, clip upper,
+		colback=black!75!white, toptitle=2pt, bottomtitle=2pt,nobeforeafter]
+  	{#2}}
+
+\def\PHOTOwidth{3cm}
+\ifbool{isPoster}{\gdef\PHOTOwidth{4cm}}{}
+\newcommand\typesetPhoto{
+	\def\PHOTO{../student_images/res_\RES/\Key.jpeg}
+	%\def\PHOTO{../student_images/res_\RES/\pgfkeysvalueof{/students/\Key/Photo}.jpeg}
+	\IfFileExists{\PHOTO}{
+		\ifbool{isLogo}
+			{\includegraphics[width=\PHOTOwidth]{\PHOTO}}
+			{\fancyframe{\includegraphics[width=\PHOTOwidth]{\PHOTO}}}
+		\global\booltrue{havePhoto}
+	}{%
+		\ifbool{showFakePhoto}{
+			{\begin{tikzpicture}
+			\useasboundingbox (0,0) rectangle (3, {2.5*1.33});
+			\node[inner sep=0pt, outer sep=0pt,alice,minimum size=2cm] at (1.25,3.1) {};
+			\end{tikzpicture}}
+			\global\booltrue{havePhoto}
+		}{%
+			\global\boolfalse{havePhoto}
+		}
+		\typeout{WARNING: Missing student image \PHOTO}
+	}%
+}
+
+%: 	Poster
+
+\newcommand\typesetPoster{%
+	%
+	\def\POSTER{../student_posters/pdf/\Key.pdf}%
+	\IfFileExists{\POSTER}{}%
+		{\def\POSTER{../student_posters/edited/\Key.jpeg}}%
+
+	\IfFileExists{\POSTER}{%
+		%\ifbool{isPosterLandscape}{L}{P}
+		\ifbool{isPosterLandscape}{
+			\pgfkeysgetvalue{/students/\Key/PosterScale}{\SCALE}
+			\includegraphics[width=\SCALE\textwidth]{\POSTER}			
+		}{
+			\includegraphics[height=13.5cm]{\POSTER}%
+		}%
+	}{}%
+}
+
+%: 	QR
+
+\newcommand\typesetQR{
+	\def\QR{../student_qr/\Key.png}
+	\IfFileExists{\QR}
+		{%
+				\pgfkeysgetvalue{/students/\Key/ProjectURL}{\TMP}%
+				\href{\TMP}{\includegraphics[width=2cm]{\QR}}%
+		}
+		{}%
+}
+
+%:	Summary
+\newcommand\typesetSummary{%
+	{\color{studentSummary}
+	\begin{minipage}{\textwidth}
+	\begin{multicols}{2}
+	\ifbool{havePhoto}{\rule{0pt}{\imagepadding}}{}%
+	\pgfkeys{/students/\Key/Summary}
+	\end{multicols}
+	\end{minipage}}%
+}
+
+
+%:	Technologies
+
+\newcommand\typesetTechnologies{%
+	\pgfkeysgetvalue{/students/\Key/Technologies}{\TMP}%
+	\ifdefempty{\TMP}{}{%
+		\ifbool{isSummary}{%
+			\parbox[t]{2.6cm}{\bfseries Technologies:}
+			\parbox[t]{14.8cm}{\pgfkeysvalueof{/students/\Key/Technologies}}
+		}{%	
+		{NO\bfseries Technologies:} \pgfkeysvalueof{/students/\Key/Technologies}
+		}
+	}	
+}
+
+%: 	Location (Room and Project No)
+
+\newcommand\typesetLocation{%
+	\pgfkeysgetvalue{/students/\Key/Number}{\TMP}%
+	\ifbool{isSummary}{%
+		\begin{tikzpicture}
+  			\node[draw, fill=studentheading!10, minimum width=3.7cm] (box) at (0,0) 
+				{%
+					\color{studentheading!50!black}%
+					\ifdefempty{\TMP}
+						{\sffamily\bfseries Not presenting}
+						{\sffamily\bfseries \#\pgfkeysvalueof{/students/\Key/Number} / \pgfkeysvalueof{/students/\Key/Room}}%
+				};
+		\end{tikzpicture}
+	}{%	
+		\begin{tikzpicture}
+  			\node[draw, fill=studentheading!10, minimum width=3.7cm] (box) at (0,0) 
+				{%
+					\color{studentheading!50!black}%
+					\ifdefempty{\TMP}
+						{\sffamily\bfseries Not presenting}
+						{\sffamily\bfseries \#\pgfkeysvalueof{/students/\Key/Number} / \pgfkeysvalueof{/students/\Key/Room}}%
+				};
+		\end{tikzpicture}
+	}%	
+}
+
+%:	ProjectAreas
+
+\newcommand\typesetProjectAreas{%
+	\pgfkeysgetvalue{/students/\Key/ProjectAreas}{\TMP}%
+	\ifdefempty{\TMP}{}{%
+		\ifbool{isSummary}{%
+			\parbox[t]{2.6cm}{\bfseries Project Areas:}
+			\parbox[t]{14.8cm}{%
+% get each project area and typeset it tex equivalent
+% but now want to merge the multiple Software Development options
+% so converting to TeX is done in Python 01-Import
+%				\def\SEP{}%
+%				\foreach \A in \TMP {%
+%					\SEP\gdef\SEP{, }%
+%					\pgfkeysvalueof{/area/\A/Name}%
+%				}%
+			\pgfkeysvalueof{/students/\Key/ProjectAreasTeX}
+			}%
+		}{%
+			\pgfkeysgetvalue{/students/\Key/ProjectAreasTeX2}{\TMP}
+			\begin{list}{$\bullet$}{\setlength\topsep{0pt}\setlength\itemsep{-2pt}}
+			\foreach \A in \TMP {%
+				\item \A%
+			}
+			\end{list}
+		}
+	}
+}
+
+%: 	Supervisor
+
+\newcommand\typesetSupervisor{%
+	\pgfkeysgetvalue{/students/\Key/SupervisorLabel}{\TMP}%
+	\ifdefempty{\TMP}{}{%
+		\ifbool{isSummary}{%
+			\parbox[t]{2.6cm}
+				{\bfseries \pgfkeysvalueof{/students/\Key/SupervisorLabel}:}
+			\parbox[t]{18.8cm}
+				{\pgfkeysvalueof{/students/\Key/Supervisor}}
+		}{%	
+		}
+	}	
+}
+
+%:	ProjectURL
+
+\newcommand\typesetProjectURL{%
+	\pgfkeysgetvalue{/students/\Key/ProjectURL}{\TMP}%
+	\ifdefempty{\TMP}{}{%
+		%\StrSubstitute{\TMP}{https://}{}[\TMP]%
+		\url{\TMP}%
+	}	
+}
+
+%:	Details
+
+\newcommand\typesetDetails{
+	\pgfkeysgetvalue{/students/\Key/Technologies}{\TMP}
+	\ifdefempty{\TMP}{}{
+		\vskip 3pt plus 3pt minus 9pt \centering
+			\begin{tikzpicture}
+				% Commercial Title
+				\node[TECHNOLOGIES_BODY]  (COM_TITLE_BODY) 
+					{\pgfkeysvalueof{/students/\Key/ProjectComTitle}};
+				\node[TECHNOLOGIES_LABEL] at (COM_TITLE_BODY.north) (COM_TITLE_LABEL)
+					{Commercial Title:};
+				% Project Type
+				\node[TECHNOLOGIES_BODY, anchor=north west] 
+					 at ($(COM_TITLE_BODY.south west)+(0,-24pt)$) (PROJECT_TYPE_BODY) 
+					{\pgfkeysvalueof{/students/\Key/ProjectType}};
+				\node[TECHNOLOGIES_LABEL] at (PROJECT_TYPE_BODY.north) (PROJECT_TYPE_LABEL)
+					{Project Type:};
+				%
+				\node[TECHNOLOGIES_BODY, anchor=north west] 
+					at ($(PROJECT_TYPE_BODY.south west)+(0,-24pt)$) (TECHNOLOGIES_BODY) 
+					{\pgfkeysvalueof{/students/\Key/Technologies}};
+				\node[TECHNOLOGIES_LABEL] at (TECHNOLOGIES_BODY.north) (TECHNOLOGIES_LABEL)
+					{Technologies:};
+			\draw ($(COM_TITLE_BODY.north west)+(0,3pt)$) --  ($(COM_TITLE_BODY.north east)+(0,3pt)$);
+			\draw ($(PROJECT_TYPE_BODY.north west)+(0,3pt)$) --  ($(PROJECT_TYPE_BODY.north east)+(0,3pt)$);
+			\draw ($(TECHNOLOGIES_BODY.north west)+(0,3pt)$) --  ($(TECHNOLOGIES_BODY.north east)+(0,3pt)$);
+			\end{tikzpicture}%
+	}
+}
+
+
+%:	Areas
+
+\def\areaNewLine{ }
+% keys to store formatting of disciplines
+\pgfkeyssetvalue{/area/Animation/Name}{Animation}
+\pgfkeyssetvalue{/area/Artificial Intelligence/Name}{Artificial Intelligence}
+\pgfkeyssetvalue{/area/Automotive and Automation/Name}{Automotive and Automation}
+\pgfkeyssetvalue{/area/CI CD Testing/Name}{CI/CD \& Testing}
+\pgfkeyssetvalue{/area/Cloud Computing/Name}{Cloud Computing}
+\pgfkeyssetvalue{/area/Computer Forensics/Name}{Computer Forensics}
+\pgfkeyssetvalue{/area/Computer Networks/Name}{Computer Networks}
+\pgfkeyssetvalue{/area/Computer Security/Name}{Computer Security}
+\pgfkeyssetvalue{/area/Database and Analytics/Name}{Database\areaNewLine and Analytics}
+\pgfkeyssetvalue{/area/DevOps/Name}{DevOps}
+\pgfkeyssetvalue{/area/Digital Graphic Design/Name}{Digital Graphic\areaNewLine Design}
+\pgfkeyssetvalue{/area/Game Development/Name}{Game\areaNewLine Development}
+\pgfkeyssetvalue{/area/Information Systems and Modelling/Name}{Information Systems\areaNewLine and Modelling}
+\pgfkeyssetvalue{/area/Internet of Things/Name}{Internet of Things}
+\pgfkeyssetvalue{/area/Machine Learning/Name}{Machine Learning}
+\pgfkeyssetvalue{/area/Media Development and Production/Name}{Media Development\areaNewLine and Production}
+\pgfkeyssetvalue{/area/Open Source/Name}{Open Source}
+\pgfkeyssetvalue{/area/Personal Independent Project/Name}{Personal Independent Project}
+\pgfkeyssetvalue{/area/Software Development Back End/Name}{Software Development:\areaNewLine Back End}
+\pgfkeyssetvalue{/area/Software Development Core/Name}{Software Development:\areaNewLine Core}
+\pgfkeyssetvalue{/area/Software Development Front End/Name}{Software Development:\areaNewLine Front End}
+\pgfkeyssetvalue{/area/Software Development Mobile Hybrid/Name}{Software Development:\areaNewLine Mobile Hybrid}
+\pgfkeyssetvalue{/area/Software Development Mobile Native/Name}{Software Development:\areaNewLine Mobile Native}
+\pgfkeyssetvalue{/area/Software Development Web/Name}{Software Development:\areaNewLine Web}
+\pgfkeyssetvalue{/area/Work Based Project/Name}{Work Based Project}
+
+\pgfkeys{
+	/typesetAreas/.is family, /typesetAreas,
+	default/.style = {name = \Key},
+	name/.estore in = \Key
+}
+
+\tikzstyle{block} = [anchor=north west,rectangle, draw=blue, 
+	fill=white, rounded corners=3pt, inner sep=0pt,
+	text width=\WIDTH, text centered, minimum height=\MINHEIGHT, font=\FONT]
+\tikzstyle{highlight} = [block,fill=yellow!20]
+\tikzstyle{subject}=[inner sep=0pt,anchor=center,scale=0.8,text width=1.3\textwidth,font=\FONT]
+\tikzstyle{subjectPoster}=[inner sep=3pt,anchor=center,scale=0.8,text width=1.3\textwidth,font=\FONT]
+
+\newcommand\typesetAreas{
+
+	\begin{tikzpicture}
+		\def\X{0.125\textwidth}
+		\def\Y{.64}\def\WIDTH{0.1245\textwidth}\def\MINHEIGHT{18pt}\def\FONT{\smaller[1]}
+	
+		% row 1
+		\foreach \x [count=\xi]  in {Database and Analytics,Information Systems and Modelling,
+			Computer Security,Computer Forensics,Game Development,
+			Media Development and Production,Software Development Core,Software Development Mobile} {
+			
+			\pgfkeysifdefined{/students/\Key/\x}{
+				\node [highlight] (IL) at (\X*\xi,\Y) 
+					{\hyperlink{\x}{\tikz\node[subject] {\pgfkeysvalueof{/disciplines/\x}};}};
+			}{
+				\node [block] (IL) at (\X*\xi,\Y) 
+				{\hyperlink{\x}{\tikz\node[subject] {\pgfkeysvalueof{/disciplines/\x}};}};
+			}
+		}
+		% row 2
+		\foreach \x [count=\xi]  in {Cloud Computing,Computer Networks,
+		Automotive and Automation,Internet of Things,
+		Digital Graphic Design,Animation,
+		Software Development Front End, Software Development Back End} {
+			
+			\pgfkeysifdefined{/students/\Key/\x}{
+				\node [highlight] (IL) at (\X*\xi,0) 
+					{\hyperlink{\x}{\tikz\node[subject] {\pgfkeysvalueof{/disciplines/\x}};}};
+			}{
+				\node [block] (IL) at (\X*\xi,0) 
+				{\hyperlink{\x}{\tikz\node[subject] {\pgfkeysvalueof{/disciplines/\x}};}};
+			}
+		}
+	\end{tikzpicture}
+}
+
+\newcommand\typesetDisciplinesPosterPortrait{
+
+	\begin{tikzpicture}
+		\def\X{0.25\textwidth}
+		\def\Y{.64}\def\WIDTH{0.249\textwidth}\def\MINHEIGHT{18pt}\def\FONT{\smaller[1]}
+	
+		% row 1
+		\foreach \x [count=\xi]  in {Database and Analytics,Information Systems and Modelling,
+			Computer Security,Computer Forensics} {
+			
+			\pgfkeysifdefined{/students/\Key/\x}{
+				\node [highlight] (IL) at (\X*\xi,3*\Y) 
+					{\hyperlink{\x}{\tikz\node[subjectPoster] {\pgfkeysvalueof{/disciplines/\x}};}};
+			}{
+				\node [block] (IL) at (\X*\xi,3*\Y) 
+				{\hyperlink{\x}{\tikz\node[subjectPoster] {\pgfkeysvalueof{/disciplines/\x}};}};
+			}
+		}
+		% row 2
+		\foreach \x [count=\xi]  in {Game Development,
+			Media Development and Production,Software Development Core,Software Development Mobile} {
+			
+			\pgfkeysifdefined{/students/\Key/\x}{
+				\node [highlight] (IL) at (\X*\xi,2*\Y) 
+					{\hyperlink{\x}{\tikz\node[subjectPoster] {\pgfkeysvalueof{/disciplines/\x}};}};
+			}{
+				\node [block] (IL) at (\X*\xi,2*\Y) 
+				{\hyperlink{\x}{\tikz\node[subjectPoster] {\pgfkeysvalueof{/disciplines/\x}};}};
+			}
+		}
+		% row 3
+		\foreach \x [count=\xi]  in {Cloud Computing,Computer Networks,
+		Automotive and Automation,Internet of Things} {
+			
+			\pgfkeysifdefined{/students/\Key/\x}{
+				\node [highlight] (IL) at (\X*\xi,1*\Y) 
+					{\hyperlink{\x}{\tikz\node[subjectPoster] {\pgfkeysvalueof{/disciplines/\x}};}};
+			}{
+				\node [block] (IL) at (\X*\xi,1*\Y) 
+				{\hyperlink{\x}{\tikz\node[subjectPoster] {\pgfkeysvalueof{/disciplines/\x}};}};
+			}
+		}
+		% row 4
+		\foreach \x [count=\xi]  in {Digital Graphic Design,Animation,
+		Software Development Front End, Software Development Back End} {
+			
+			\pgfkeysifdefined{/students/\Key/\x}{
+				\node [highlight] (IL) at (\X*\xi,0) 
+					{\hyperlink{\x}{\tikz\node[subjectPoster] {\pgfkeysvalueof{/disciplines/\x}};}};
+			}{
+				\node [block] (IL) at (\X*\xi,0) 
+				{\hyperlink{\x}{\tikz\node[subjectPoster] {\pgfkeysvalueof{/disciplines/\x}};}};
+			}
+		}
+	\end{tikzpicture}
+}
+
+%: TIKZLayout
+
+\tikzset{%
+ 	DEBUG/.style = {},
+	COMMERICAL_TITLE/.style = {DEBUG,anchor=north west, text width=20cm,text height=12pt, text depth=3pt},
+	LABEL/.style = {DEBUG, anchor=north west,font={\smaller[2]\bfseries}},
+	CONTENT/.style = {DEBUG, anchor=north west},
+	%
+	PHOTO/.style = {DEBUG,anchor=north east, text width=4cm,align=center},
+	ACADEMIC_TITLE_LABEL/.style = {LABEL},
+	ACADEMIC_TITLE/.style = {CONTENT,text width=22.2cm},
+	NAME/.style = {DEBUG,anchor=north east},
+	POSTER/.style = {DEBUG,anchor=north east, inner sep=0pt, outer sep=0pt},
+	PROJECT_URL/.style = {DEBUG},
+	SUMMARY/.style = {DEBUG,font=\larger},
+	SUPERVISORS/.style = {DEBUG},
+%	TECHNOLOGIES/.style = {DEBUG},
+}
+ 
+ \newbool{isPosterLandscape}
+ 
+\def\TIKZLayout{%
+%\vskip 48pt plus 48pt minus 40pt
+%\vskip \ENTRYSKIP
+\enlargethispage{60pt}%
+\begin{tikzpicture}
+
+	%
+	\useasboundingbox (-4.3,-0.4) rectangle (21,-17.4);
+	%\draw[fill=yellow!10] (-4.3,0.1) rectangle (21,-17.4);
+	%
+	\pgfkeysgetvalue{/students/\Key/PosterOrientation}{\PosterOrientation}%
+	\ifdefstring{\PosterOrientation}{portrait}
+		{\boolfalse{isPosterLandscape}}
+		{\booltrue{isPosterLandscape}}
+	
+	\node[COMMERICAL_TITLE] (COMMERICAL_TITLE) {%
+		\hypertarget{\Key}{}\label{project:\Key}\writeprojectlink%
+		\pgfkeysgetvalue{/students/\Key/CommercialTitle}{\CommercialTitle}%
+		\color{studentTitle}\bfseries\LARGE%
+		\parbox{19.5cm}{\hfill\CommercialTitle\hfill\mbox{}}\par%
+	};
+	
+	\node[anchor=north west,scale=1.4] 
+		at ($(COMMERICAL_TITLE.north west)+(20.1,0.2)$) 
+		{\typesetLocation};
+	
+	\node[PHOTO] (PHOTO) 
+		at (COMMERICAL_TITLE.north west)
+		{\typesetPhoto};
+		
+	\node[ACADEMIC_TITLE_LABEL] (ACADEMIC_TITLE_LABEL) 
+		at (COMMERICAL_TITLE.south west) 
+		{\smaller[2] \bfseries Academic Title};
+	\node[ACADEMIC_TITLE] (ACADEMIC_TITLE) 
+		at ($(ACADEMIC_TITLE_LABEL.south west)+(1,0)$)
+		{%
+			\pgfkeysgetvalue{/students/\Key/AcademicTitle}{\AcademicTitle}%
+			\color{studentTitle}\bfseries\large%
+			\parbox{22cm}{\raggedright\AcademicTitle}\par%
+		};
+	\node[NAME] (NAME) at ($(ACADEMIC_TITLE.north east)+(2.02,-0.65)$)
+		{\typesetName};		
+
+	\node[LABEL] (PROJECT_AREAS_LABEL) 
+		at ($(ACADEMIC_TITLE.south west) + (-1,-0.2)$)
+		{Project Areas};
+	\node[CONTENT,text width=15cm] (PROJECT_AREAS) 
+		at ($(PROJECT_AREAS_LABEL.south west) + (0.1,0.2)$)
+		{\typesetProjectAreas};
+
+	\pgfkeysgetvalue{/students/\Key/SupervisorLabel}{\TMP}
+	\ifdefempty{\TMP}
+		{}
+		{%
+			\node[LABEL] (SUPERVISOR_LABEL) 
+				at ($(PROJECT_AREAS.south west) + (-0.1,-0.2)$)
+				{\pgfkeysvalueof{/students/\Key/SupervisorLabel}};
+			\node[SUPERVISOR] (SUPERVISOR) 
+				at ($(SUPERVISOR_LABEL.south west) + (1,0.2)$)
+				{\pgfkeysvalueof{/students/\Key/Supervisor}};
+		}
+		
+	\pgfkeysgetvalue{/students/\Key/Summary}{\Summary}
+	\pgfkeysgetvalue{/students/\Key/Technologies}{\Technologies}
+
+	\pgfkeysgetvalue{/students/\Key/PosterScale}{\SCALE}
+	% poster + summary 	
+	\ifbool{isPosterLandscape}{%
+	
+		\def\POFFSET{-6.1}
+		\ifdefstring{\Key}{Tibor_Molnar_10FA0}{\gdef\POFFSET{-7.1}}{}
+		\ifdefstring{\Key}{Isadora_Fitzgerald_C1597}{\gdef\POFFSET{-7.1}}{}
+		\ifdefstring{\Key}{Grzegorz_Piotrowski_BAF94}{\gdef\POFFSET{-7.1}}{}
+		
+		\node[POSTER,anchor=north west,text width=13.5cm] (POSTER) 
+			at ($(PHOTO.north west)+(3,\POFFSET)$)
+			{\typesetPoster};
+		
+			
+		\node[SUMMARY,anchor=north east, text width=9cm] (SUMMARY) 
+			at ($(NAME.south east)+(0,-2)$)
+			{\Summary};
+		\node[anchor=north east] at ($(SUMMARY.south east)+(0,-1)$)
+			{\parbox[t]{2.5cm}{\bf Technologies: }\ \parbox[t]{7cm}{\Technologies}};
+		\node[PROJECT_URL,anchor=north west] (PROJECT_QR) 
+			at ($(PHOTO.north west)+(-0.3,-14)$) 
+			{\typesetQR};
+		\node[PROJECT_URL,anchor=south west] (PROJECT_URL) 
+			at ($(COMMERICAL_TITLE.north west)+(-1.9,-16.1)$)
+			{\typesetProjectURL};
+
+	}{% portrait 
+		\node[POSTER, text width=10cm] (POSTER) 
+			at (NAME.south east)
+			{\typesetPoster};
+			
+		\node[SUMMARY,anchor=north west, text width=18cm] (SUMMARY) 
+			at ($(PHOTO.north west)+(0,-7)$)
+			{\def\parskip{12pt}\Summary\par};
+
+		\node[DEBUG,anchor=north west] (TECHNOLOGIES)
+			at ($(COMMERICAL_TITLE.north west)+(-1.9,-14.3)$)
+			{\parbox[t]{2.5cm}{\bf Technologies: }\ \parbox[t]{12cm}{\Technologies}};
+
+		\node[PROJECT_URL,anchor=north west] (PROJECT_QR) 
+			at ($(PHOTO.north west)+(-0.3,-14)$) 
+			{\typesetQR};
+			
+		\node[PROJECT_URL,anchor=south west] (PROJECT_URL) 
+			at ($(COMMERICAL_TITLE.north west)+(-1.9,-16.1)$)
+			{\typesetProjectURL};
+
+
+	}
+	
+	%
+
+%	\node[TITLE] (TITLE) {\hypertarget{\Key}{}\label{project:\Key}\writeprojectlink\typesetAcademicTitle};
+%	\node[NAME] at (TITLE.south east) (NAME) {\typesetName};
+%	\node[PHOTO] at ($(TITLE.south west) +(2,0)$) (PHOTO) {\typesetPhoto};
+%	\node[SUMMARY,text width=20cm] at ($(NAME.south east)+(0,0)$) (SUMMARY) {\typesetSummary};
+%	\node[TECHNOLOGIES] at ($(SUMMARY.south west)+(2,-0.3)$) (TECHNOLOGIES) {\typesetTechnologies};
+%	\node[PROJECT_AREAS] at ($(TECHNOLOGIES.south west)+(0,-0.1)$) (PROJECT_AREAS) 
+%				{\typesetProjectAreas};
+%	\node[PROJECT_URL] at ($(PROJECT_AREAS.south west)+(0,-0.3)$) (PROJECT_AREAS) 
+%				{\typesetProjectURL};
+
+%	% line count
+%	% TODO position at top of title and set to be of zero size
+%	\node[anchor=north west] at (NAME.south east) {
+%		%\begin{tikzpicture}\foreach \y in {1,2,...,15} {\node at (0,-{.42*\y}) {\y}; }\end{tikzpicture}
+%	};
+%	
+%	\setlength{\imagepadding}{0pt}
+%	\ifbool{havePhoto}{
+%		\tcbsetmacrotoheightofnode{\photoHeight}{PHOTO}
+%		\tcbsetmacrotoheightofnode{\nameHeight}{NAME}
+%		\global\deflength{\imagepadding}{\photoHeight-\nameHeight+6pt}
+%	}{}
+%
+%	\node[ABSTRACT] at (NAME.south east) (ABSTRACT) {\typesetAbstract};
+%	
+%	\node[DISCIPLINES] at ($(ABSTRACT.south west)+(0,-\DISCIPLINESKIP)$)
+%	 		(DISCIPLINES) {\typesetDisciplines};
+%	
+%	\pgfkeysgetvalue{/students/\Key/ProjectURL}{\ProjectURL}  
+%	\ifdefempty{\ProjectURL}
+%		{}
+%		{\node[URL] at (DISCIPLINES.south west) (URL) {\typesetURL};}
+\end{tikzpicture}}
+
+%: \TIKZSummaryLayout
+
+%\ifbool{isSummary}{
+%    \def\PHOTOwidth{2.5cm}
+%    \tikzset{%
+%    	DEBUG/.style = {},
+%    	LABEL/.style = {DEBUG,font=\smaller\smaller\bfseries}
+%    }
+%}{}
+
+\def\TIKZSummaryLayout{
+\vskip 48pt plus 48pt minus 52pt
+\vskip \ENTRYSKIP
+
+\begin{tikzpicture}
+	%\node[LABEL,align=center] (L1) {Commercial Title:};
+	\node[TITLE,text width=20cm,align=center, text depth=2pt] %at ($(L1.south west)+(1,0.1)$) 
+		(C_TITLE) 
+		{\hypertarget{\Key}{}\label{project:\Key}\writeprojectlink\typesetCommercialTitle};
+	\node[LABEL] 
+		at ($(C_TITLE.south west)+(0,-0.1)$) (L2) 
+		{Academic Title:};
+	\node[TITLE,anchor=north west,text width=24cm]  
+		at ($(L2.south west)+(1,0.1)$)  (A_TITLE) 
+		{\hypertarget{\Key}{}\label{project:\Key}\writeprojectlink\typesetAcademicTitle};
+	\node[NAME] at (A_TITLE.south east) (NAME) {\typesetName};
+	\node[PHOTO,anchor=north east] 
+		at ($(C_TITLE.north west) +(-1,0)$) (PHOTO) 
+		{\typesetPhoto};
+%	\node[SUMMARY,text width=20cm] at ($(NAME.south east)+(0,0)$) (SUMMARY) {\typesetSummary};
+	\node[TECHNOLOGIES,text width=21.5cm] 
+		at ($(A_TITLE.south west)+(-1,-0.3)$) (TECHNOLOGIES) 
+		{\typesetTechnologies};
+	\node[PROJECT_AREAS,text width=21.5cm] 
+		at ($(TECHNOLOGIES.south west)+(0,-0.1)$) (PROJECT_AREAS) 
+		{\typesetProjectAreas};
+	\node[PROJECT_AREAS,text width=21.5cm,anchor=north west] 
+		at ($(PROJECT_AREAS.south west)+(0,-0.3)$) (SUPERVISORS) 
+		{\typesetSupervisor};
+	\node[PROJECT_URL,text width=24cm,anchor=north west] 
+		at ($(SUPERVISORS.south west)+(-0.1,-0.1)$) (PROJECT_URL) 
+		{\typesetProjectURL};
+	\node[anchor=north east] 
+		at ($(NAME.south east)+(0,0.)$) (QR) 
+		{\typesetQR};
+	\node[anchor=north west] 
+		at ($(C_TITLE.north west)+(20.3,0.05)$) (LOCATION)
+		{\typesetLocation};
+\end{tikzpicture}}
+
+%\input{../student_content/location.tex}
+
+\def\Location{
+	\node[text width=4cm,anchor=north east,font=\large,fill=gray!15] at ($(TITLE.north west)+(25.67,12pt)$)
+	(LOCATION) 
+	{\begin{tikzpicture}
+		\node[align=center]
+		{%{\large L O C A T I O N}\\[12pt]
+		\LARGE\bfseries \pgfkeysvalueof{/students/\Key/Location}};
+	\end{tikzpicture}};
+}
+
+
+%\input{../student_content/hdip}
+
+%: data files 
+
+\typeout{READING DATA FILES}
+
+\input{../student_content/areas.tex}
+%\input{../student_content/poster.tex}
+\typeout{READING DATA FILES - DONE}
+
+\def\DefaultLayout{\ifbool{isSummary}{\TIKZSummaryLayout}{\TIKZLayout}}
+
+
+\def\RES{ebook}
+\def\FORMAT{jpeg}
+
+% extra spacing doe 2021 booklet to have two entries per page
+\def\PARSKIP{\vspace{3pt}}
+\def\DISCIPLINESKIP{12pt}
+\def\ENTRYSKIP{9pt plus 9pt minus 3pt}
+
+\def\programmeTODO{
+    \ifbool{isSummary}{}{
+    \vfill
+    {\LARGE\color{red} TODO - This content needs to be updated.\\
+    Similar to SSD / HDip <- single page, image + high level overview}
+    \vfill\mbox{}
+    }
+}
+\endinput

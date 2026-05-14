@@ -1,0 +1,110 @@
+% !TEX TS-program = LuaLaTeX
+\documentclass[twoside]{report}
+
+\input{../latex/setu-computing-graduate-2026}
+\def\RES{ebook}
+\def\FORMAT{jpeg}
+
+\booltrue{isSingleStudent}
+\booltrue{showFakePhoto}
+
+\begin{document}
+
+\begingroup\globaldefs=1\relax
+
+%: SID
+\pgfkeyssetvalue{/students/Dominik_Falkowski_4750C/SID}{[SID]}
+
+
+%: Key
+\def\Key{Dominik_Falkowski_4750C}
+\pgfkeyssetvalue{/students/Dominik_Falkowski_4750C/Key}{Dominik_Falkowski_4750C}
+
+%: Name
+\pgfkeyssetvalue{/students/Dominik_Falkowski_4750C/Name}
+{Dominik Falkowski}
+\pgfkeyssetvalue{/students/Dominik_Falkowski_4750C/SortName}
+{Falkowski, Dominik}
+
+%: Programme
+\pgfkeyssetvalue{/students/Dominik_Falkowski_4750C/Programme}
+{Bachelor of Science (Honours) in Applied Computing}
+
+%: Photo
+\pgfkeyssetvalue{/students/Dominik_Falkowski_4750C/Photo}
+{Dominik_Falkowski_4750C}
+\pgfkeyssetvalue{/students/Dominik_Falkowski_4750C/HasPhoto}
+{True}
+
+%: Poster
+\pgfkeyssetvalue{/students/Dominik_Falkowski_4750C/Poster}
+{Dominik_Falkowski_4750C}
+\pgfkeyssetvalue{/students/Dominik_Falkowski_4750C/HasPoster}
+{True}
+\pgfkeyssetvalue{/students/Dominik_Falkowski_4750C/PosterWidth}
+{2579}
+\pgfkeyssetvalue{/students/Dominik_Falkowski_4750C/PosterHeight}
+{3648}
+\pgfkeyssetvalue{/students/Dominik_Falkowski_4750C/PosterOrientation}
+{portrait}
+\pgfkeyssetvalue{/students/Dominik_Falkowski_4750C/PosterScale}
+{1}
+
+%: QR
+\pgfkeyssetvalue{/students/Dominik_Falkowski_4750C/QR}
+{SD}
+\pgfkeyssetvalue{/students/Dominik_Falkowski_4750C/HasQR}
+{True}
+
+%: CommercialTitle
+\pgfkeyssetvalue{/students/Dominik_Falkowski_4750C/CommercialTitle}
+{AI-Driven Log Analysis Tool}
+
+%: AcademicTitle
+\pgfkeyssetvalue{/students/Dominik_Falkowski_4750C/AcademicTitle}
+{AI-Driven Log Analysis Tool}
+
+%: Summary
+\pgfkeyssetvalue{/students/Dominik_Falkowski_4750C/Summary}
+{This project develops an AI-driven log analysis tool that ingests system logs in real time, detects suspicious activity, and generates natural language explanations. Logs are continuously collected from a host machine and processed. An AI model is used to identify anomalies in log patterns, while a fine-tuned large language model interprets these events and explains their significance in plain language. The system is presented through a user interface, allowing users to query logs, monitor activity, and gain insights into potential security threats.}
+
+%: Technologies 
+\pgfkeyssetvalue{/students/Dominik_Falkowski_4750C/Technologies}
+{FastAPI, Streamlit, SQLite, LogBERT, Qwen LLM, Hugging Face, Python}
+
+%: ProjectURL
+\pgfkeyssetvalue{/students/Dominik_Falkowski_4750C/ProjectURL}
+{https://github.com/FalkowskiDom/FYP}
+
+%: SupervisorLabel
+\pgfkeyssetvalue{/students/Dominik_Falkowski_4750C/SupervisorLabel}
+{Project Supervisor}
+
+%: SupervisorTitle
+\pgfkeyssetvalue{/students/Dominik_Falkowski_4750C/SupervisorTitle}
+{}
+
+%: Supervisor
+\pgfkeyssetvalue{/students/Dominik_Falkowski_4750C/Supervisor}
+{Dr John Sheppard}
+
+%: Room
+\pgfkeyssetvalue{/students/Dominik_Falkowski_4750C/Room}
+{TL2.25}
+
+%: Number
+\pgfkeyssetvalue{/students/Dominik_Falkowski_4750C/Number}
+{11}
+
+%: ProjectAreas
+\pgfkeyssetvalue{/students/Dominik_Falkowski_4750C/ProjectAreas}
+{Computer Networks,Database and Analytics}
+\pgfkeyssetvalue{/students/Dominik_Falkowski_4750C/ProjectAreasTeX}
+{\pgfkeysvalueof{/area/Computer Networks/Name}, \pgfkeysvalueof{/area/Database and Analytics/Name}}
+\pgfkeyssetvalue{/students/Dominik_Falkowski_4750C/ProjectAreasTeX2}
+{\pgfkeysvalueof{/area/Computer Networks/Name}, \pgfkeysvalueof{/area/Database and Analytics/Name}}
+
+\endgroup
+
+\DefaultLayout
+\end{document}

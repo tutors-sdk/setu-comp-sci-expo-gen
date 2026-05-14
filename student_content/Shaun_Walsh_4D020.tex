@@ -1,0 +1,110 @@
+% !TEX TS-program = LuaLaTeX
+\documentclass[twoside]{report}
+
+\input{../latex/setu-computing-graduate-2026}
+\def\RES{ebook}
+\def\FORMAT{jpeg}
+
+\booltrue{isSingleStudent}
+\booltrue{showFakePhoto}
+
+\begin{document}
+
+\begingroup\globaldefs=1\relax
+
+%: SID
+\pgfkeyssetvalue{/students/Shaun_Walsh_4D020/SID}{[SID]}
+
+
+%: Key
+\def\Key{Shaun_Walsh_4D020}
+\pgfkeyssetvalue{/students/Shaun_Walsh_4D020/Key}{Shaun_Walsh_4D020}
+
+%: Name
+\pgfkeyssetvalue{/students/Shaun_Walsh_4D020/Name}
+{Shaun Walsh}
+\pgfkeyssetvalue{/students/Shaun_Walsh_4D020/SortName}
+{Walsh, Shaun}
+
+%: Programme
+\pgfkeyssetvalue{/students/Shaun_Walsh_4D020/Programme}
+{Higher Diploma in Science in Computer Science}
+
+%: Photo
+\pgfkeyssetvalue{/students/Shaun_Walsh_4D020/Photo}
+{Shaun_Walsh_4D020}
+\pgfkeyssetvalue{/students/Shaun_Walsh_4D020/HasPhoto}
+{True}
+
+%: Poster
+\pgfkeyssetvalue{/students/Shaun_Walsh_4D020/Poster}
+{Shaun_Walsh_4D020}
+\pgfkeyssetvalue{/students/Shaun_Walsh_4D020/HasPoster}
+{True}
+\pgfkeyssetvalue{/students/Shaun_Walsh_4D020/PosterWidth}
+{1404}
+\pgfkeyssetvalue{/students/Shaun_Walsh_4D020/PosterHeight}
+{3508}
+\pgfkeyssetvalue{/students/Shaun_Walsh_4D020/PosterOrientation}
+{portrait}
+\pgfkeyssetvalue{/students/Shaun_Walsh_4D020/PosterScale}
+{1}
+
+%: QR
+\pgfkeyssetvalue{/students/Shaun_Walsh_4D020/QR}
+{SD}
+\pgfkeyssetvalue{/students/Shaun_Walsh_4D020/HasQR}
+{True}
+
+%: CommercialTitle
+\pgfkeyssetvalue{/students/Shaun_Walsh_4D020/CommercialTitle}
+{AI: D.O.M}
+
+%: AcademicTitle
+\pgfkeyssetvalue{/students/Shaun_Walsh_4D020/AcademicTitle}
+{Operationalising MLOps at the Edge-Deploy, Operate, and Monitor AI at the Edge}
+
+%: Summary
+\pgfkeyssetvalue{/students/Shaun_Walsh_4D020/Summary}
+{FlightCtl manages edge device fleets in a Kubernetes like way. While MLOps is straightforward in cloud platforms, it grows harder at the edge due to constrained resources and connectivity. FlightCtl monitors device health but lacks ML model observability. This project closes that gap using a sidecar pattern, keeping FlightCtl framework-agnostic. The agent is extended with an ML Model Monitor that translates drift scores into Healthy/Warning/Critical status, triggering retraining when thresholds are exceeded. A reference MLOps app demonstrates end-to-end model deployment to edge devices.}
+
+%: Technologies 
+\pgfkeyssetvalue{/students/Shaun_Walsh_4D020/Technologies}
+{FlightCtl, Edge, MLOps, Golang, Python, Podman, Bootc, Quadlets, Inferencing}
+
+%: ProjectURL
+\pgfkeyssetvalue{/students/Shaun_Walsh_4D020/ProjectURL}
+{https://bit.ly/AI-DOM}
+
+%: SupervisorLabel
+\pgfkeyssetvalue{/students/Shaun_Walsh_4D020/SupervisorLabel}
+{Project Supervisor}
+
+%: SupervisorTitle
+\pgfkeyssetvalue{/students/Shaun_Walsh_4D020/SupervisorTitle}
+{}
+
+%: Supervisor
+\pgfkeyssetvalue{/students/Shaun_Walsh_4D020/Supervisor}
+{Peter Windle}
+
+%: Room
+\pgfkeyssetvalue{/students/Shaun_Walsh_4D020/Room}
+{TL2.38}
+
+%: Number
+\pgfkeyssetvalue{/students/Shaun_Walsh_4D020/Number}
+{101}
+
+%: ProjectAreas
+\pgfkeyssetvalue{/students/Shaun_Walsh_4D020/ProjectAreas}
+{AI ML Development,CI CD Testing,Cloud Computing,DevOps,Internet of Things,Software Development Back End,Work Based Project,Open Source}
+\pgfkeyssetvalue{/students/Shaun_Walsh_4D020/ProjectAreasTeX}
+{\pgfkeysvalueof{/area/AI ML Development/Name}, \pgfkeysvalueof{/area/CI CD Testing/Name}, \pgfkeysvalueof{/area/Cloud Computing/Name}, \pgfkeysvalueof{/area/DevOps/Name}, \pgfkeysvalueof{/area/Internet of Things/Name}, \pgfkeysvalueof{/area/Work Based Project/Name}, \pgfkeysvalueof{/area/Open Source/Name}, Software Development: (Back End)}
+\pgfkeyssetvalue{/students/Shaun_Walsh_4D020/ProjectAreasTeX2}
+{\pgfkeysvalueof{/area/AI ML Development/Name}, \pgfkeysvalueof{/area/CI CD Testing/Name}, \pgfkeysvalueof{/area/Cloud Computing/Name}, \pgfkeysvalueof{/area/DevOps/Name}, \pgfkeysvalueof{/area/Internet of Things/Name}, \pgfkeysvalueof{/area/Work Based Project/Name}, \pgfkeysvalueof{/area/Open Source/Name}, Software Development: (Back End)}
+
+\endgroup
+
+\DefaultLayout
+\end{document}

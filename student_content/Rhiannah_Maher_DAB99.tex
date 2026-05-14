@@ -1,0 +1,111 @@
+% !TEX TS-program = LuaLaTeX
+\documentclass[twoside]{report}
+
+\input{../latex/setu-computing-graduate-2026}
+\def\RES{ebook}
+\def\FORMAT{jpeg}
+
+\booltrue{isSingleStudent}
+\booltrue{showFakePhoto}
+
+\begin{document}
+
+\begingroup\globaldefs=1\relax
+
+%: SID
+\pgfkeyssetvalue{/students/Rhiannah_Maher_DAB99/SID}{[SID]}
+
+
+%: Key
+\def\Key{Rhiannah_Maher_DAB99}
+\pgfkeyssetvalue{/students/Rhiannah_Maher_DAB99/Key}{Rhiannah_Maher_DAB99}
+
+%: Name
+\pgfkeyssetvalue{/students/Rhiannah_Maher_DAB99/Name}
+{Rhiannah Maher}
+\pgfkeyssetvalue{/students/Rhiannah_Maher_DAB99/SortName}
+{Maher, Rhiannah}
+
+%: Programme
+\pgfkeyssetvalue{/students/Rhiannah_Maher_DAB99/Programme}
+{Higher Diploma in Science in Computer Science}
+
+%: Photo
+\pgfkeyssetvalue{/students/Rhiannah_Maher_DAB99/Photo}
+{Rhiannah_Maher_DAB99}
+\pgfkeyssetvalue{/students/Rhiannah_Maher_DAB99/HasPhoto}
+{True}
+
+%: Poster
+\pgfkeyssetvalue{/students/Rhiannah_Maher_DAB99/Poster}
+{Rhiannah_Maher_DAB99}
+\pgfkeyssetvalue{/students/Rhiannah_Maher_DAB99/HasPoster}
+{True}
+\pgfkeyssetvalue{/students/Rhiannah_Maher_DAB99/PosterWidth}
+{1920}
+\pgfkeyssetvalue{/students/Rhiannah_Maher_DAB99/PosterHeight}
+{1080}
+\pgfkeyssetvalue{/students/Rhiannah_Maher_DAB99/PosterOrientation}
+{landscape}
+\pgfkeyssetvalue{/students/Rhiannah_Maher_DAB99/PosterScale}
+{1}
+
+%: QR
+\pgfkeyssetvalue{/students/Rhiannah_Maher_DAB99/QR}
+{SD}
+\pgfkeyssetvalue{/students/Rhiannah_Maher_DAB99/HasQR}
+{True}
+
+%: CommercialTitle
+\pgfkeyssetvalue{/students/Rhiannah_Maher_DAB99/CommercialTitle}
+{Warble}
+
+%: AcademicTitle
+\pgfkeyssetvalue{/students/Rhiannah_Maher_DAB99/AcademicTitle}
+{A System for Multi-Model LLM Evaluation \& Optimization}
+
+%: Summary
+\pgfkeyssetvalue{/students/Rhiannah_Maher_DAB99/Summary}
+{\emph{Warble} automates prompt evaluation and optimisation across multiple Large Language Models (LLMs). Built with a React front end and Python FastAPI back end, users can submit prompts and evaluate responses using F1-Score, ROUGE, and cosine similarity. 
+Prompts are optimised through greedy and evolutionary search algorithms. The system integrates AWS Bedrock for LLM inference and is deployed on AWS for scalability. \emph{Warble} provides visual feedback on prompt performance, offering a structured alternative to manual prompt engineering across different LLM architectures.}
+
+%: Technologies 
+\pgfkeyssetvalue{/students/Rhiannah_Maher_DAB99/Technologies}
+{React, JavaScript, Python, FastAPI, Node.js, Hugging Face, NLTK, Amazon Web Services}
+
+%: ProjectURL
+\pgfkeyssetvalue{/students/Rhiannah_Maher_DAB99/ProjectURL}
+{https://bit.ly/Warble}
+
+%: SupervisorLabel
+\pgfkeyssetvalue{/students/Rhiannah_Maher_DAB99/SupervisorLabel}
+{Project Supervisor}
+
+%: SupervisorTitle
+\pgfkeyssetvalue{/students/Rhiannah_Maher_DAB99/SupervisorTitle}
+{}
+
+%: Supervisor
+\pgfkeyssetvalue{/students/Rhiannah_Maher_DAB99/Supervisor}
+{Mary Fitzgerald}
+
+%: Room
+\pgfkeyssetvalue{/students/Rhiannah_Maher_DAB99/Room}
+{Not Presenting}
+
+%: Number
+\pgfkeyssetvalue{/students/Rhiannah_Maher_DAB99/Number}
+{86}
+
+%: ProjectAreas
+\pgfkeyssetvalue{/students/Rhiannah_Maher_DAB99/ProjectAreas}
+{AI ML Development,Cloud Computing,Software Development Back End,Software Development Front End,Work Based Project}
+\pgfkeyssetvalue{/students/Rhiannah_Maher_DAB99/ProjectAreasTeX}
+{\pgfkeysvalueof{/area/AI ML Development/Name}, \pgfkeysvalueof{/area/Cloud Computing/Name}, \pgfkeysvalueof{/area/Work Based Project/Name}, Software Development: (Back End / Front End)}
+\pgfkeyssetvalue{/students/Rhiannah_Maher_DAB99/ProjectAreasTeX2}
+{\pgfkeysvalueof{/area/AI ML Development/Name}, \pgfkeysvalueof{/area/Cloud Computing/Name}, \pgfkeysvalueof{/area/Work Based Project/Name}, Software Development: (Back End / Front End)}
+
+\endgroup
+
+\DefaultLayout
+\end{document}

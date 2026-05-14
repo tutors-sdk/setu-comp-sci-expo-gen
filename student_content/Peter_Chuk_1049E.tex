@@ -1,0 +1,114 @@
+% !TEX TS-program = LuaLaTeX
+\documentclass[twoside]{report}
+
+\input{../latex/setu-computing-graduate-2026}
+\def\RES{ebook}
+\def\FORMAT{jpeg}
+
+\booltrue{isSingleStudent}
+\booltrue{showFakePhoto}
+
+\begin{document}
+
+\begingroup\globaldefs=1\relax
+
+%: SID
+\pgfkeyssetvalue{/students/Peter_Chuk_1049E/SID}{[SID]}
+
+
+%: Key
+\def\Key{Peter_Chuk_1049E}
+\pgfkeyssetvalue{/students/Peter_Chuk_1049E/Key}{Peter_Chuk_1049E}
+
+%: Name
+\pgfkeyssetvalue{/students/Peter_Chuk_1049E/Name}
+{Peter Chuk}
+\pgfkeyssetvalue{/students/Peter_Chuk_1049E/SortName}
+{Chuk, Peter}
+
+%: Programme
+\pgfkeyssetvalue{/students/Peter_Chuk_1049E/Programme}
+{Higher Diploma in Science in Computer Science}
+
+%: Photo
+\pgfkeyssetvalue{/students/Peter_Chuk_1049E/Photo}
+{Peter_Chuk_1049E}
+\pgfkeyssetvalue{/students/Peter_Chuk_1049E/HasPhoto}
+{True}
+
+%: Poster
+\pgfkeyssetvalue{/students/Peter_Chuk_1049E/Poster}
+{Peter_Chuk_1049E}
+\pgfkeyssetvalue{/students/Peter_Chuk_1049E/HasPoster}
+{True}
+\pgfkeyssetvalue{/students/Peter_Chuk_1049E/PosterWidth}
+{6623}
+\pgfkeyssetvalue{/students/Peter_Chuk_1049E/PosterHeight}
+{9364}
+\pgfkeyssetvalue{/students/Peter_Chuk_1049E/PosterOrientation}
+{portrait}
+\pgfkeyssetvalue{/students/Peter_Chuk_1049E/PosterScale}
+{1}
+
+%: QR
+\pgfkeyssetvalue{/students/Peter_Chuk_1049E/QR}
+{SD}
+\pgfkeyssetvalue{/students/Peter_Chuk_1049E/HasQR}
+{True}
+
+%: CommercialTitle
+\pgfkeyssetvalue{/students/Peter_Chuk_1049E/CommercialTitle}
+{CareModel Hub}
+
+%: AcademicTitle
+\pgfkeyssetvalue{/students/Peter_Chuk_1049E/AcademicTitle}
+{Developing the CareModel Hub Web Application for Implementing the Kidney Failure Risk Equation}
+
+%: Summary
+\pgfkeyssetvalue{/students/Peter_Chuk_1049E/Summary}
+{The CareModel Hub (CMH) is a modular clinical decision support platform designed to bridge the gap between validated medical algorithms and their practical use in healthcare.
+
+The platform uses a microservice architecture where a Node.js backend manages authentication and user roles while isolated Python services perform clinical calculations such as the Kidney Failure Risk Equation (KFRE).
+
+The system follows EU NIS2 cybersecurity principles and supports HL7 FHIR interoperability standards for integration with modern healthcare systems.}
+
+%: Technologies 
+\pgfkeyssetvalue{/students/Peter_Chuk_1049E/Technologies}
+{Node.js, Python, FastAPI, React, MongoDB, Microservices, HL7 FHIR}
+
+%: ProjectURL
+\pgfkeyssetvalue{/students/Peter_Chuk_1049E/ProjectURL}
+{https://pccork.github.io/caremodelhub-showcase/}
+
+%: SupervisorLabel
+\pgfkeyssetvalue{/students/Peter_Chuk_1049E/SupervisorLabel}
+{Project Supervisor}
+
+%: SupervisorTitle
+\pgfkeyssetvalue{/students/Peter_Chuk_1049E/SupervisorTitle}
+{}
+
+%: Supervisor
+\pgfkeyssetvalue{/students/Peter_Chuk_1049E/Supervisor}
+{Dr Anita Kealy}
+
+%: Room
+\pgfkeyssetvalue{/students/Peter_Chuk_1049E/Room}
+{TL2.38}
+
+%: Number
+\pgfkeyssetvalue{/students/Peter_Chuk_1049E/Number}
+{76}
+
+%: ProjectAreas
+\pgfkeyssetvalue{/students/Peter_Chuk_1049E/ProjectAreas}
+{DevOps,Information Systems and Modelling,Software Development Back End,Software Development Front End,Software Development Web,Work Based Project,Open Source}
+\pgfkeyssetvalue{/students/Peter_Chuk_1049E/ProjectAreasTeX}
+{\pgfkeysvalueof{/area/DevOps/Name}, \pgfkeysvalueof{/area/Information Systems and Modelling/Name}, \pgfkeysvalueof{/area/Work Based Project/Name}, \pgfkeysvalueof{/area/Open Source/Name}, Software Development: (Back End / Front End / Web)}
+\pgfkeyssetvalue{/students/Peter_Chuk_1049E/ProjectAreasTeX2}
+{\pgfkeysvalueof{/area/DevOps/Name}, \pgfkeysvalueof{/area/Information Systems and Modelling/Name}, \pgfkeysvalueof{/area/Work Based Project/Name}, \pgfkeysvalueof{/area/Open Source/Name}, Software Development: (Back End / Front End / Web)}
+
+\endgroup
+
+\DefaultLayout
+\end{document}

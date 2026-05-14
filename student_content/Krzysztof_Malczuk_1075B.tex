@@ -1,0 +1,110 @@
+% !TEX TS-program = LuaLaTeX
+\documentclass[twoside]{report}
+
+\input{../latex/setu-computing-graduate-2026}
+\def\RES{ebook}
+\def\FORMAT{jpeg}
+
+\booltrue{isSingleStudent}
+\booltrue{showFakePhoto}
+
+\begin{document}
+
+\begingroup\globaldefs=1\relax
+
+%: SID
+\pgfkeyssetvalue{/students/Krzysztof_Malczuk_1075B/SID}{[SID]}
+
+
+%: Key
+\def\Key{Krzysztof_Malczuk_1075B}
+\pgfkeyssetvalue{/students/Krzysztof_Malczuk_1075B/Key}{Krzysztof_Malczuk_1075B}
+
+%: Name
+\pgfkeyssetvalue{/students/Krzysztof_Malczuk_1075B/Name}
+{Krzysztof Malczuk}
+\pgfkeyssetvalue{/students/Krzysztof_Malczuk_1075B/SortName}
+{Malczuk, Krzysztof}
+
+%: Programme
+\pgfkeyssetvalue{/students/Krzysztof_Malczuk_1075B/Programme}
+{Bachelor of Science (Honours) in Applied Computing}
+
+%: Photo
+\pgfkeyssetvalue{/students/Krzysztof_Malczuk_1075B/Photo}
+{Krzysztof_Malczuk_1075B}
+\pgfkeyssetvalue{/students/Krzysztof_Malczuk_1075B/HasPhoto}
+{True}
+
+%: Poster
+\pgfkeyssetvalue{/students/Krzysztof_Malczuk_1075B/Poster}
+{Krzysztof_Malczuk_1075B}
+\pgfkeyssetvalue{/students/Krzysztof_Malczuk_1075B/HasPoster}
+{True}
+\pgfkeyssetvalue{/students/Krzysztof_Malczuk_1075B/PosterWidth}
+{2480}
+\pgfkeyssetvalue{/students/Krzysztof_Malczuk_1075B/PosterHeight}
+{3508}
+\pgfkeyssetvalue{/students/Krzysztof_Malczuk_1075B/PosterOrientation}
+{portrait}
+\pgfkeyssetvalue{/students/Krzysztof_Malczuk_1075B/PosterScale}
+{1}
+
+%: QR
+\pgfkeyssetvalue{/students/Krzysztof_Malczuk_1075B/QR}
+{SD}
+\pgfkeyssetvalue{/students/Krzysztof_Malczuk_1075B/HasQR}
+{True}
+
+%: CommercialTitle
+\pgfkeyssetvalue{/students/Krzysztof_Malczuk_1075B/CommercialTitle}
+{Facial Interface for AI Agents}
+
+%: AcademicTitle
+\pgfkeyssetvalue{/students/Krzysztof_Malczuk_1075B/AcademicTitle}
+{Design and Development of a Facial Interface for AI Agents}
+
+%: Summary
+\pgfkeyssetvalue{/students/Krzysztof_Malczuk_1075B/Summary}
+{This project is a facial interface for AI agents that displays real-time emotional expressions during conversation. It processes live audio input and uses vector embeddings to detect sentiment and tone, which are mapped to dynamic facial animations rendered in C++ using Raylib on a Raspberry Pi. AI responses are generated using Llama Stack, converted to speech, and streamed back for playback, enabling a fully voice-based interaction with no text display. The system is deployed with a Kubernetes backend using a Bun-based service for faster processing.}
+
+%: Technologies 
+\pgfkeyssetvalue{/students/Krzysztof_Malczuk_1075B/Technologies}
+{Python, C++, TypeScript, Raylib, Bun, PyTorch, Kubernetes, Llama Stack, Raspberry Pi}
+
+%: ProjectURL
+\pgfkeyssetvalue{/students/Krzysztof_Malczuk_1075B/ProjectURL}
+{https://2000krysztof.github.io/final-year-project/}
+
+%: SupervisorLabel
+\pgfkeyssetvalue{/students/Krzysztof_Malczuk_1075B/SupervisorLabel}
+{Project Supervisor}
+
+%: SupervisorTitle
+\pgfkeyssetvalue{/students/Krzysztof_Malczuk_1075B/SupervisorTitle}
+{}
+
+%: Supervisor
+\pgfkeyssetvalue{/students/Krzysztof_Malczuk_1075B/Supervisor}
+{Dr Kieran Murphy}
+
+%: Room
+\pgfkeyssetvalue{/students/Krzysztof_Malczuk_1075B/Room}
+{TL2.50}
+
+%: Number
+\pgfkeyssetvalue{/students/Krzysztof_Malczuk_1075B/Number}
+{21}
+
+%: ProjectAreas
+\pgfkeyssetvalue{/students/Krzysztof_Malczuk_1075B/ProjectAreas}
+{AI ML Development,Internet of Things,Software Development Back End,Software Development Core,Open Source}
+\pgfkeyssetvalue{/students/Krzysztof_Malczuk_1075B/ProjectAreasTeX}
+{\pgfkeysvalueof{/area/AI ML Development/Name}, \pgfkeysvalueof{/area/Internet of Things/Name}, \pgfkeysvalueof{/area/Open Source/Name}, Software Development: (Back End / Core)}
+\pgfkeyssetvalue{/students/Krzysztof_Malczuk_1075B/ProjectAreasTeX2}
+{\pgfkeysvalueof{/area/AI ML Development/Name}, \pgfkeysvalueof{/area/Internet of Things/Name}, \pgfkeysvalueof{/area/Open Source/Name}, Software Development: (Back End / Core)}
+
+\endgroup
+
+\DefaultLayout
+\end{document}

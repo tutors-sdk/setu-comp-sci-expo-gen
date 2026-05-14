@@ -1,0 +1,110 @@
+% !TEX TS-program = LuaLaTeX
+\documentclass[twoside]{report}
+
+\input{../latex/setu-computing-graduate-2026}
+\def\RES{ebook}
+\def\FORMAT{jpeg}
+
+\booltrue{isSingleStudent}
+\booltrue{showFakePhoto}
+
+\begin{document}
+
+\begingroup\globaldefs=1\relax
+
+%: SID
+\pgfkeyssetvalue{/students/Adam_Thompson_2002B/SID}{[SID]}
+
+
+%: Key
+\def\Key{Adam_Thompson_2002B}
+\pgfkeyssetvalue{/students/Adam_Thompson_2002B/Key}{Adam_Thompson_2002B}
+
+%: Name
+\pgfkeyssetvalue{/students/Adam_Thompson_2002B/Name}
+{Adam Thompson}
+\pgfkeyssetvalue{/students/Adam_Thompson_2002B/SortName}
+{Thompson, Adam}
+
+%: Programme
+\pgfkeyssetvalue{/students/Adam_Thompson_2002B/Programme}
+{Bachelor of Science (Honours) in Applied Computing}
+
+%: Photo
+\pgfkeyssetvalue{/students/Adam_Thompson_2002B/Photo}
+{Adam_Thompson_2002B}
+\pgfkeyssetvalue{/students/Adam_Thompson_2002B/HasPhoto}
+{True}
+
+%: Poster
+\pgfkeyssetvalue{/students/Adam_Thompson_2002B/Poster}
+{Adam_Thompson_2002B}
+\pgfkeyssetvalue{/students/Adam_Thompson_2002B/HasPoster}
+{True}
+\pgfkeyssetvalue{/students/Adam_Thompson_2002B/PosterWidth}
+{2480}
+\pgfkeyssetvalue{/students/Adam_Thompson_2002B/PosterHeight}
+{3511}
+\pgfkeyssetvalue{/students/Adam_Thompson_2002B/PosterOrientation}
+{portrait}
+\pgfkeyssetvalue{/students/Adam_Thompson_2002B/PosterScale}
+{1}
+
+%: QR
+\pgfkeyssetvalue{/students/Adam_Thompson_2002B/QR}
+{SD}
+\pgfkeyssetvalue{/students/Adam_Thompson_2002B/HasQR}
+{True}
+
+%: CommercialTitle
+\pgfkeyssetvalue{/students/Adam_Thompson_2002B/CommercialTitle}
+{SentinelMesh}
+
+%: AcademicTitle
+\pgfkeyssetvalue{/students/Adam_Thompson_2002B/AcademicTitle}
+{Distributed Intrusion Detection System with Consensus-Based Anomaly Validation}
+
+%: Summary
+\pgfkeyssetvalue{/students/Adam_Thompson_2002B/Summary}
+{SentinelMesh is a distributed intrusion detection system that spreads traffic analysis across three independent nodes, each running a different machine learning model - Logistic Regression with PCA, Decision Tree, and MLP. When a node flags suspicious traffic, it consults its peers and a majority vote determines the final classification, reducing false positives without sacrificing recall. Each model draws different decision boundaries, so disagreement on borderline flows is meaningful. All ML inference runs natively in Go from exported JSON meaning there is no Python at runtime.}
+
+%: Technologies 
+\pgfkeyssetvalue{/students/Adam_Thompson_2002B/Technologies}
+{Python, Go, scikit-learn, AWS, PostgeSQL}
+
+%: ProjectURL
+\pgfkeyssetvalue{/students/Adam_Thompson_2002B/ProjectURL}
+{https://adamthompson43.github.io/distributed-ids/}
+
+%: SupervisorLabel
+\pgfkeyssetvalue{/students/Adam_Thompson_2002B/SupervisorLabel}
+{Project Supervisor}
+
+%: SupervisorTitle
+\pgfkeyssetvalue{/students/Adam_Thompson_2002B/SupervisorTitle}
+{}
+
+%: Supervisor
+\pgfkeyssetvalue{/students/Adam_Thompson_2002B/Supervisor}
+{Dr John Sheppard}
+
+%: Room
+\pgfkeyssetvalue{/students/Adam_Thompson_2002B/Room}
+{TL2.25}
+
+%: Number
+\pgfkeyssetvalue{/students/Adam_Thompson_2002B/Number}
+{31}
+
+%: ProjectAreas
+\pgfkeyssetvalue{/students/Adam_Thompson_2002B/ProjectAreas}
+{AI ML Development,Cloud Computing,Computer Networks,Database and Analytics,Software Development Core,Software Development Front End,Software Development Mobile Hybrid}
+\pgfkeyssetvalue{/students/Adam_Thompson_2002B/ProjectAreasTeX}
+{\pgfkeysvalueof{/area/AI ML Development/Name}, \pgfkeysvalueof{/area/Cloud Computing/Name}, \pgfkeysvalueof{/area/Computer Networks/Name}, \pgfkeysvalueof{/area/Database and Analytics/Name}, Software Development: (Core / Front End / Mobile Hybrid)}
+\pgfkeyssetvalue{/students/Adam_Thompson_2002B/ProjectAreasTeX2}
+{\pgfkeysvalueof{/area/AI ML Development/Name}, \pgfkeysvalueof{/area/Cloud Computing/Name}, \pgfkeysvalueof{/area/Computer Networks/Name}, \pgfkeysvalueof{/area/Database and Analytics/Name}, Software Development: (Core / Front End / Mobile Hybrid)}
+
+\endgroup
+
+\DefaultLayout
+\end{document}

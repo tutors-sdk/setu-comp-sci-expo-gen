@@ -1,0 +1,110 @@
+% !TEX TS-program = LuaLaTeX
+\documentclass[twoside]{report}
+
+\input{../latex/setu-computing-graduate-2026}
+\def\RES{ebook}
+\def\FORMAT{jpeg}
+
+\booltrue{isSingleStudent}
+\booltrue{showFakePhoto}
+
+\begin{document}
+
+\begingroup\globaldefs=1\relax
+
+%: SID
+\pgfkeyssetvalue{/students/Jorja_Holland_22082/SID}{[SID]}
+
+
+%: Key
+\def\Key{Jorja_Holland_22082}
+\pgfkeyssetvalue{/students/Jorja_Holland_22082/Key}{Jorja_Holland_22082}
+
+%: Name
+\pgfkeyssetvalue{/students/Jorja_Holland_22082/Name}
+{Jorja Holland}
+\pgfkeyssetvalue{/students/Jorja_Holland_22082/SortName}
+{Holland, Jorja}
+
+%: Programme
+\pgfkeyssetvalue{/students/Jorja_Holland_22082/Programme}
+{Bachelor of Science (Honours) in Computer Forensics and Security}
+
+%: Photo
+\pgfkeyssetvalue{/students/Jorja_Holland_22082/Photo}
+{Jorja_Holland_22082}
+\pgfkeyssetvalue{/students/Jorja_Holland_22082/HasPhoto}
+{True}
+
+%: Poster
+\pgfkeyssetvalue{/students/Jorja_Holland_22082/Poster}
+{Jorja_Holland_22082}
+\pgfkeyssetvalue{/students/Jorja_Holland_22082/HasPoster}
+{True}
+\pgfkeyssetvalue{/students/Jorja_Holland_22082/PosterWidth}
+{1587}
+\pgfkeyssetvalue{/students/Jorja_Holland_22082/PosterHeight}
+{2245}
+\pgfkeyssetvalue{/students/Jorja_Holland_22082/PosterOrientation}
+{portrait}
+\pgfkeyssetvalue{/students/Jorja_Holland_22082/PosterScale}
+{1}
+
+%: QR
+\pgfkeyssetvalue{/students/Jorja_Holland_22082/QR}
+{SD}
+\pgfkeyssetvalue{/students/Jorja_Holland_22082/HasQR}
+{True}
+
+%: CommercialTitle
+\pgfkeyssetvalue{/students/Jorja_Holland_22082/CommercialTitle}
+{LearnSec}
+
+%: AcademicTitle
+\pgfkeyssetvalue{/students/Jorja_Holland_22082/AcademicTitle}
+{System for Deploying Security and Forensic Classroom Labs}
+
+%: Summary
+\pgfkeyssetvalue{/students/Jorja_Holland_22082/Summary}
+{LearnSec is a cloud-based system designed to simplify cybersecurity lab deployment for students. A web application built using Python (Flask) provides the user interface, while Boto3 is used to communicate with AWS services start and stop the lab environments in AWS Academy. A separate AWS account hosts AWS Cognito for user management and S3 buckets for storing lab content and launch templates, which are accessed by AWS Academy users. Apache Guacamole provides a browser-based desktop interface. Labs are created on demand, making the system cost-effective, scalable, and secure.}
+
+%: Technologies 
+\pgfkeyssetvalue{/students/Jorja_Holland_22082/Technologies}
+{AWS, AWS Academy, Python, Python Flask, Boto3, Pycharm, Apache Guacamole}
+
+%: ProjectURL
+\pgfkeyssetvalue{/students/Jorja_Holland_22082/ProjectURL}
+{https://jholland-22.github.io/websiteFYP/}
+
+%: SupervisorLabel
+\pgfkeyssetvalue{/students/Jorja_Holland_22082/SupervisorLabel}
+{Project Supervisor}
+
+%: SupervisorTitle
+\pgfkeyssetvalue{/students/Jorja_Holland_22082/SupervisorTitle}
+{}
+
+%: Supervisor
+\pgfkeyssetvalue{/students/Jorja_Holland_22082/Supervisor}
+{Jimmy McGibney}
+
+%: Room
+\pgfkeyssetvalue{/students/Jorja_Holland_22082/Room}
+{TL2.50}
+
+%: Number
+\pgfkeyssetvalue{/students/Jorja_Holland_22082/Number}
+{36}
+
+%: ProjectAreas
+\pgfkeyssetvalue{/students/Jorja_Holland_22082/ProjectAreas}
+{Cloud Computing,Computer Security}
+\pgfkeyssetvalue{/students/Jorja_Holland_22082/ProjectAreasTeX}
+{\pgfkeysvalueof{/area/Cloud Computing/Name}, \pgfkeysvalueof{/area/Computer Security/Name}}
+\pgfkeyssetvalue{/students/Jorja_Holland_22082/ProjectAreasTeX2}
+{\pgfkeysvalueof{/area/Cloud Computing/Name}, \pgfkeysvalueof{/area/Computer Security/Name}}
+
+\endgroup
+
+\DefaultLayout
+\end{document}
